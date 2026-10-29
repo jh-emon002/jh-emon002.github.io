@@ -92,3 +92,10 @@ The site uses low-glare slate backgrounds and teal accents. All scholarships and
 ## Image gallery performance recommendations
 
 You may add as many image paths as needed to each `images` array. For efficient loading on GitHub Pages, prefer compressed WebP/JPEG images (roughly 100-300 KB for thumbnails, if practical). Store the files in `assets/projects/` or `assets/publications/`, and commit them alongside `settings.js`. The thumbnail strip scrolls horizontally; tapping a thumbnail opens its full-size viewer with keyboard/arrow navigation. Missing files stay hidden.
+
+
+## Browser-tab favicon
+
+The icon shown beside the page title in a browser tab is the **J monogram** in `favicon-jaied.svg`. The site also includes PNG and ICO fallbacks, and an Apple touch icon. These are referenced in `index.html`; the separate header logo is unchanged.
+
+After pushing the update to GitHub Pages, refresh the page. If the old tab icon remains, try a hard refresh or an incognito window: browsers cache favicons aggressively. All favicon assets must be uploaded alongside `index.html`.

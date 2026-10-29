@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="J monogram favicon">
+  <rect x="1" y="1" width="62" height="62" rx="15" fill="#10212b" stroke="#294753" stroke-width="2"/>
+  <path d="M17 15h29v8h-8v18c0 9-5 15-14 15-8 0-13-5-14-12l8-2c1 4 3 6 7 6 4 0 6-3 6-8V23H17z" fill="#f0faf9"/>
+  <circle cx="50" cy="13" r="5" fill="#62dbce"/>
+</svg>
