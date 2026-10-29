@@ -1,45 +1,44 @@
-# Md. Jaied Hasan - Portfolio Website
+# Md. Jaied Hasan - Single-Page Portfolio
 
-A static GitHub Pages portfolio updated from the supplied `settings.js`, GitHub profile README, and earlier CVs. The existing dark circuit theme, portrait, CV download buttons, and per-item photo galleries are retained. No build step or server-side framework is needed.
+A minimal, responsive academic and engineering portfolio. It is a single scrollable page, not a multi-page website, and is ready for GitHub Pages. The content is drawn from the supplied and previously updated `settings.js` and preserves the existing publication/project photo references.
 
-## What's new
+## Layout and navigation
 
-- **Projects:** 17 entries, including seven added from the GitHub README: Frequency Converter with Real-Time Display and Tuning, Tic-Tac-Toe Using Basic Gates, Frequency Division Multiplexing, Sensitivity Analysis of IEEE 30 & 33 Bus Systems, Linear Induction Motor, Transient Analysis App, and AutoCAD Electrical Service Design for a 14-story building. Existing Wi-Fi 8, federated PCA, ML, rescue drone, smart helmet, robotics, and other projects remain.
-- **Skills:** New dedicated page featuring the GitHub README's programming, simulation, embedded, AI/ML, PCB, and app-development tools, plus wireless research methods supported by the CV.
-- **Beyond engineering:** Fighter-jet and aviation interest on the homepage, as described in the GitHub README.
-- **Contact:** Both email addresses and clickable LinkedIn, GitHub, Facebook, and Kaggle profiles.
-- **Homepage:** The "Fresh EEE Graduate" tagline and "Always learning. Always improving." closing line.
-- **Publications:** Your three uploaded publication entries and their exact submitted/accepted/under-review statuses remain unchanged. Existing publication image paths are preserved.
-- **Education:** Undergraduate and HSC qualifications only; no graduate-degree entry.
+The top navigation stays visible while scrolling and links to exactly seven sections in this order:
 
-## Files
+1. Home
+2. Education
+3. Research & Publications
+4. Projects
+5. Experience
+6. Skills & Achievements
+7. Contact
+
+On desktop, Home displays the introduction and About Me on the left, with the portrait on the right. On smaller screens, the portrait appears beside the intro, followed by the longer About Me text. On mobile, swipe the top navigation horizontally to reach links that are outside the screen.
+
+The Projects section includes a category filter. The search icon in the top bar can find sections, publications, projects and technical skills.
+
+## Folder contents
 
 ```text
-index.html             Main HTML and edit dialogs
-style.css              Responsive dark-theme styling
-app.js                 Navigation, galleries, customization, search, rendering
-settings.js            Public content, publication/project entries, image paths
-favicon.svg
+index.html                 Site HTML, search, image viewer, and edit dialogs
+style.css                  Responsive light theme, sticky nav, section styles
+app.js                     Single-page sections, search, gallery, editor
+settings.js                All public profile and portfolio content
+favicon.svg                New minimal JH monogram icon
+.nojekyll                  GitHub Pages helper
 assets/
-  portrait.jpg         Existing portfolio portrait
-  cv.pdf               Research CV
-  master-cv.pdf        Master CV
-  IMAGE_GUIDE.md       Complete photo-path list for all 20 items
-  publications/        Put your own publication images here
-  projects/            Put your own project photos here
+  portrait.jpg             Current portrait
+  cv.pdf                   Academic CV
+  master-cv.pdf            Complete CV
+  IMAGE_GUIDE.md           Exact image paths for all publications/projects
+  publications/            Your actual publication photos go here
+  projects/                Your actual project photos go here
 ```
 
-## Multi-image galleries
+## Add as many publication or project images as you want
 
-Every item has an `images` array inside `settings.js`. It may contain 1, 3, 20, or more paths. Galleries display loaded photos in a horizontal, scrollable strip; clicking any thumbnail opens an enlarged photo with previous/next navigation. Missing images are hidden gracefully. The layout is mobile-responsive.
-
-**Images are referenced, not embedded.** No project/publication photos were uploaded along with these source files. The website will show a gallery for an item once files exist in its configured `assets/` paths. Preserve existing photo files when replacing website source code; avoid deleting the `assets/` directories in your GitHub clone.
-
-See [`assets/IMAGE_GUIDE.md`](assets/IMAGE_GUIDE.md) for every image filename, including the custom paths in your most recent `settings.js`.
-
-### Adding more images
-
-In `settings.js`, find a publication or project entry and add more strings to its `images` list:
+Each publication or project has an `images` list in `settings.js` with local asset filenames. For example:
 
 ```js
 "images": [
@@ -50,37 +49,38 @@ In `settings.js`, find a publication or project entry and add more strings to it
 ]
 ```
 
-You can also manage images and items in the built-in editor at `?edit=1`: click **Customize**, locate the relevant project/publication, enter image paths on separate lines, **Save preview**, then **Download settings.js**. Upload/commit that settings file and all referenced photos to publish for everyone.
+Place each actual file at the specified path. Galleries will display every image that loads and hide missing image paths automatically. Click any thumbnail for a larger image, then use the arrows or your keyboard's left/right arrow keys. There is no preset gallery image limit.
 
-### Edit other website information
+**Important:** This ZIP does not contain project or publication image files, since they were not provided. If your repository already has files inside `assets/publications/` or `assets/projects/`, keep those folders and their images when updating the website. The ZIP includes the folders as placeholders. See `assets/IMAGE_GUIDE.md` for all currently configured paths.
 
-The Customize dialog also supports: profile tagline, aviation interests, social URLs, BUET email, and text for the Skills and other pages. To update a skill group, write a group heading on its first line and separate technologies with `|` on the next line, placing a blank line between groups. These edits are stored in the downloaded `settings.js`.
+## Edit profile, project descriptions, or image paths later
 
-If you have previously used `?edit=1`, your browser may have older private preview data saved under `academic-portfolio-v1`, which can override the newly published settings only while in edit mode. Open the normal URL without `?edit=1` for the published version; export or clear the older preview data if needed.
+Open the website URL with `?edit=1`, for example:
 
-## Local preview
-
-Double-click `index.html`, or serve from the root folder for a closer GitHub Pages preview:
-
-```bash
-python -m http.server 8000
+```text
+https://YOUR_USERNAME.github.io/?edit=1
 ```
 
-Open `http://localhost:8000/` in the browser. Use `http://localhost:8000/?edit=1` to customize.
+Choose **Customize** at the bottom right. You can edit the bio, tagline, CV paths, social profiles, education/research/experience/skills/achievements text, and any publication/project item and its image paths. Enter one image filename per line. Use **Save preview** for a private browser-only preview. Then use **Download settings.js** to obtain the public settings file, and commit the replacement to your GitHub repository.
 
-## Publish to GitHub Pages
+The visible combined sections still have separate editable content fields: Research and Publications are under one navigation section; Skills and Achievements are under one navigation section.
 
-Copy the files from this package into your cloned repository. **Keep any existing photos in `assets/projects/` and `assets/publications/`**, since the ZIP does not contain them.
+Private browser previews made with an older `?edit=1` version may override published settings when you are in edit mode. To inspect the public site, open it without `?edit=1`.
+
+## Deploy to GitHub Pages
+
+Copy `index.html`, `app.js`, `style.css`, `settings.js`, `favicon.svg`, `README.md`, `.nojekyll` and `assets/` from this package into the root of your existing site repository. Preserve existing pictures in `assets/projects/` and `assets/publications/`.
 
 ```bash
-git status
-git add index.html style.css app.js settings.js favicon.svg README.md assets/
-git commit -m "Update portfolio from GitHub README and expand projects"
+git add .
+git commit -m "Switch portfolio to minimal single-page layout"
 git push origin main
 ```
 
-If your repository uses another branch, use that branch instead. For GitHub Pages, keep `index.html` at the repository root and configure deployment from `main` / root folder (unless your existing setup is different).
+For a repository using a different deployment branch, push to that branch instead. GitHub Pages should deploy the repository root (or whichever folder is currently configured). No build step, Node installation, or API key is necessary.
 
-## Accuracy notes
+## Notes on sources and statuses
 
-Publication statuses and titles have been retained **verbatim from your latest uploaded `settings.js`**; the website does not claim a submission has been published. Project descriptions were expanded from your shared GitHub README without inventing new hardware, results, or publications. The new projects have placeholder image **paths only**; they do not have invented images.
+The website includes 3 publication entries and 17 projects. Their descriptions, statuses and image paths come from the previous updated `settings.js`, based on the user's CV and GitHub README. Accepted or submitted items have not been relabeled as published work. Education includes only undergraduate and higher-secondary studies, not graduate education.
+
+The favicon is an original minimal `JH` monogram. It replaces the earlier site icon.
