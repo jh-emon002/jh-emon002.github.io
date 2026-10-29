@@ -23,8 +23,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Privacy-preserving, federated sparse principal-component analysis with a correlated-noise mechanism. Evaluates privacy–utility, sparsity, convergence, reconstruction, and communication-efficiency trade-offs.",
       "link": "",
       "images": [
-        "assets/publications/method.drawio.png",
-        "assets/publications/img2.png"
+        "assets/publications/federated-sparse-pca.jpg",
+        "assets/publications/federated-sparse-pca-2.jpg",
+        "assets/publications/federated-sparse-pca-3.jpg"
       ]
     },
     {
@@ -35,7 +36,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Conference paper on the integrated pre-ride safety, crash detection, emergency-response, and mobile companion system. Venue and publication link can be added once available.",
       "link": "",
       "images": [
-        "assets/publications/motorcycle-safety.jpg"
+        "assets/publications/motorcycle-safety.jpg",
+        "assets/publications/motorcycle-safety-2.jpg",
+        "assets/publications/motorcycle-safety-3.jpg"
       ]
     },
     {
@@ -46,7 +49,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Conference submission based on mobile-internet traffic forecasting with XGBoost, GRU, and LSTM models, with MAE/RMSE benchmarking to support data-driven network capacity planning. Title is descriptive; update to the final submitted title if different.",
       "link": "",
       "images": [
-        "assets/publications/mobile-traffic-forecasting.jpg"
+        "assets/publications/mobile-traffic-forecasting.jpg",
+        "assets/publications/mobile-traffic-forecasting-2.jpg",
+        "assets/publications/mobile-traffic-forecasting-3.jpg"
       ]
     }
   ],
@@ -59,7 +64,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Python-based wireless-network simulator for multi-AP coordination, carrier sensing, channel and propagation modeling, directional beams, zero-forcing precoding, SINR, and throughput. Compares conventional CSMA/CA, coordinated beamforming with inter-cluster interference, and an ideal interference-free reference.",
       "link": "",
       "images": [
-        "assets/projects/wifi8-beamforming.jpg"
+        "assets/projects/wifi8-beamforming.jpg",
+        "assets/projects/wifi8-beamforming-2.jpg",
+        "assets/projects/wifi8-beamforming-3.jpg"
       ]
     },
     {
@@ -70,7 +77,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Federated sparse PCA for horizontally partitioned datasets using correlated noise for differential privacy. Assessed sparsity, convergence, reconstruction, and privacy–utility trade-offs.",
       "link": "",
       "images": [
-        "assets/projects/federated-pca.jpg"
+        "assets/projects/federated-pca.jpg",
+        "assets/projects/federated-pca-2.jpg",
+        "assets/projects/federated-pca-3.jpg"
       ]
     },
     {
@@ -81,7 +90,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Built a teacher–student pipeline for Bangla, English, and Banglish/code-mixed harmful-content classification. Fine-tuned an XLM-RoBERTa teacher on a 47K+ sample three-class dataset and designed an approximately 5M-parameter byte-level BPE student, achieving approximately 55× parameter compression.",
       "link": "",
       "images": [
-        "assets/projects/toxicity-classification.jpg"
+        "assets/projects/toxicity-classification.jpg",
+        "assets/projects/toxicity-classification-2.jpg",
+        "assets/projects/toxicity-classification-3.jpg"
       ]
     },
     {
@@ -92,7 +103,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Forecasted regional mobile-internet traffic, focusing on the Savar region, using XGBoost, GRU, and LSTM. Benchmarked forecasts with MAE and RMSE to explore data-driven bandwidth allocation and network capacity planning.",
       "link": "",
       "images": [
-        "assets/projects/mobile-traffic.jpg"
+        "assets/projects/mobile-traffic.jpg",
+        "assets/projects/mobile-traffic-2.jpg",
+        "assets/projects/mobile-traffic-3.jpg"
       ]
     },
     {
@@ -103,7 +116,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Developed a semi-autonomous search-and-rescue drone for GPS-denied environments, combining inertial navigation, dual-camera visual odometry, Raspberry Pi-based human detection, and wireless ground-station reporting.",
       "link": "",
       "images": [
-        "assets/projects/rescue-drone.jpg"
+        "assets/projects/rescue-drone.jpg",
+        "assets/projects/rescue-drone-2.jpg",
+        "assets/projects/rescue-drone-3.jpg"
       ]
     },
     {
@@ -114,7 +129,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Built a wearable IoT smart helmet featuring fall/crash detection, alcohol sensing, overspeed monitoring, GPS localization, SIM800L emergency communication, and a mobile app for SOS and monitoring.",
       "link": "",
       "images": [
-        "assets/projects/smart-helmet.jpg"
+        "assets/projects/smart-helmet.jpg",
+        "assets/projects/smart-helmet-2.jpg",
+        "assets/projects/smart-helmet-3.jpg"
       ]
     },
     {
@@ -125,7 +142,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Built a mobile robot integrating flame sensors, L298N motor drivers, autonomous navigation, and fire-suppression actuation. Used ESP-NOW for inter-controller communication and closed-loop flame localization.",
       "link": "",
       "images": [
-        "assets/projects/fire-robot.jpg"
+        "assets/projects/fire-robot.jpg",
+        "assets/projects/fire-robot-2.jpg",
+        "assets/projects/fire-robot-3.jpg"
       ]
     },
     {
@@ -136,7 +155,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Classified pulmonary disorders using MFCC features extracted from respiratory audio and a KNN classifier in MATLAB. A project variant reports 98.66% macro sensitivity.",
       "link": "",
       "images": [
-        "assets/projects/respiratory-audio.jpg"
+        "assets/projects/respiratory-audio.jpg",
+        "assets/projects/respiratory-audio-2.jpg",
+        "assets/projects/respiratory-audio-3.jpg"
       ]
     },
     {
@@ -147,7 +168,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Developed an embedded vision prototype with ESP32-CAM video streaming and a pretrained MobileNetV2 classifier, displaying live predictions and confidence overlays.",
       "link": "",
       "images": [
-        "assets/projects/esp-eye.jpg"
+        "assets/projects/esp-eye.jpg",
+        "assets/projects/esp-eye-2.jpg",
+        "assets/projects/esp-eye-3.jpg"
       ]
     },
     {
@@ -158,7 +181,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Implemented a dual-channel pressure-monitoring device that streams real-time data to a web dashboard, with local LCD/button operation and remote configuration.",
       "link": "",
       "images": [
-        "assets/projects/pressure-monitor.jpg"
+        "assets/projects/pressure-monitor.jpg",
+        "assets/projects/pressure-monitor-2.jpg",
+        "assets/projects/pressure-monitor-3.jpg"
       ]
     }
   ],

@@ -26,8 +26,8 @@ function renderCatalog(page){
  for(const [index,item] of items.entries()){const key=item.category||'Other';let group=groups.find(g=>g.category===key);if(!group){group={category:key,items:[]};groups.push(group)}group.items.push({item,index})}
  const markup=groups.map(group=>`<section class="catalog-section"><div class="catalog-heading"><h2>${esc(group.category)}</h2><span>${group.items.length} ${group.items.length===1?'item':'items'}</span></div><div class="catalog-list">${group.items.map(({item,index})=>{
    const id=`${isPub?'publication':'project'}-${index}`;
-   const images=Array.isArray(item.images)?item.images.filter(path=>safeUrl(path,true)).slice(0,12):[];
-   const gallery=images.length?`<div class="media-gallery" hidden aria-label="Images for ${esc(item.title)}">${images.map((path,i)=>`<button type="button" class="gallery-tile" data-image="${esc(safeUrl(path,true))}" data-title="${esc(item.title)}" aria-label="View image ${i+1} of ${esc(item.title)}"><img src="${esc(safeUrl(path,true))}" alt="${esc(item.title)} — image ${i+1}" loading="eager" decoding="async"></button>`).join('')}</div>`:'';
+   const images=Array.isArray(item.images)?item.images.filter(path=>safeUrl(path,true)):[];
+   const gallery=images.length?`<div class="media-gallery" hidden aria-label="Images for ${esc(item.title)}"><div class="gallery-header"><span class="gallery-heading">${isPub?'Publication images':'Project images'}</span><span class="gallery-count" aria-live="polite"></span></div><div class="gallery-strip" role="group" aria-label="Image thumbnails">${images.map((path,i)=>`<button type="button" class="gallery-tile" data-image="${esc(safeUrl(path,true))}" data-title="${esc(item.title)}" aria-label="Open image ${i+1} of ${esc(item.title)}"><img src="${esc(safeUrl(path,true))}" alt="${esc(item.title)} — image ${i+1}" loading="eager" decoding="async"></button>`).join('')}</div><button type="button" class="gallery-open-all">View photo gallery <span aria-hidden="true">↗</span></button></div>`:'';
    const link=safeUrl(item.link);
    return `<article id="${id}" class="showcase-card no-media"><div class="showcase-copy">${item.status?`<p class="item-status">${esc(item.status)}</p>`:''}<h3>${esc(item.title||'Untitled item')}</h3>${item.meta?`<p class="item-meta">${esc(item.meta)}</p>`:''}<p class="item-description">${esc(item.description||'')}</p>${link?`<a class="item-link" href="${esc(link)}" rel="noopener noreferrer" target="_blank">${isPub?'View publication':'Explore project'} <span aria-hidden="true">↗</span></a>`:''}</div>${gallery}</article>`;
  }).join('')}</div></section>`).join('');
@@ -36,14 +36,24 @@ function renderCatalog(page){
 function activateGalleries(){
  $('#main').querySelectorAll('.media-gallery').forEach(gallery=>{
    const card=gallery.closest('.showcase-card');
+   // Only images that successfully load appear in the gallery.
+   // This keeps incomplete image collections from showing broken thumbnails.
+   const update=()=>{
+      const count=gallery.querySelectorAll('.gallery-tile:not([hidden])').length;
+      gallery.hidden=count===0;
+      card.classList.toggle('no-media',count===0);
+      gallery.querySelector('.gallery-count').textContent=`${count} ${count===1?'photo':'photos'}`;
+      gallery.querySelector('.gallery-open-all').hidden=count<2;
+   };
    gallery.querySelectorAll('.gallery-tile').forEach(tile=>{
       const img=tile.querySelector('img');
-      const loaded=()=>{tile.hidden=false;gallery.hidden=false;card.classList.remove('no-media')};
-      const failed=()=>{tile.hidden=true;if(!gallery.querySelector('.gallery-tile:not([hidden])')){gallery.hidden=true;card.classList.add('no-media')}};
       tile.hidden=true;
+      const loaded=()=>{tile.hidden=false;update()};
+      const failed=()=>{tile.hidden=true;update()};
       img.addEventListener('load',loaded,{once:true});img.addEventListener('error',failed,{once:true});
       if(img.complete){if(img.naturalWidth>0)loaded();else failed()}
    });
+   update();
  });
 }
 function render(){
@@ -72,10 +82,13 @@ function displayLightbox(index){
  $('#lightbox-prev').hidden=galleryImages.length<2;$('#lightbox-next').hidden=galleryImages.length<2;
 }
 $('#main').addEventListener('click',event=>{
- const tile=event.target.closest('.gallery-tile');if(!tile||tile.hidden)return;
- const peers=[...tile.closest('.media-gallery').querySelectorAll('.gallery-tile:not([hidden])')];
+ const tile=event.target.closest('.gallery-tile');
+ const gallery=(tile||event.target.closest('.gallery-open-all'))?.closest('.media-gallery');
+ if(!gallery||tile?.hidden)return;
+ const peers=[...gallery.querySelectorAll('.gallery-tile:not([hidden])')];
+ if(!peers.length)return;
  galleryImages=peers.map(t=>({src:t.dataset.image,title:t.dataset.title,alt:t.querySelector('img').alt}));
- displayLightbox(peers.indexOf(tile));$('#lightbox').showModal();
+ displayLightbox(tile?peers.indexOf(tile):0);$('#lightbox').showModal();
 });
 $('#lightbox-prev').onclick=()=>displayLightbox(activeImage-1);
 $('#lightbox-next').onclick=()=>displayLightbox(activeImage+1);
@@ -90,8 +103,8 @@ function fieldInput(id,label,value,kind='text'){
 function renderItemEditors(){
  for(const [cat,label] of [['publicationItems','Publications'],['projectItems','Projects']]){
   const host=$(`[data-items="${cat}"]`),arr=draftCatalog[cat]||[];
-  host.innerHTML=`<p class="hint">Enter paths relative to the site root (for example, <code>assets/${cat==='publicationItems'?'publications':'projects'}/image.jpg</code>). Add more paths on separate lines to make a gallery.</p>`+
-   arr.map((item,i)=>`<div class="item-editor" data-cat="${cat}" data-index="${i}"><div class="item-editor-head"><strong>${esc(item.title||'New item')}</strong><button type="button" class="remove-item" data-cat="${cat}" data-index="${i}">Remove</button></div>${fieldInput('title','Title',item.title)}<div class="editor-pair">${fieldInput('category','Category',item.category)}${fieldInput('status','Status / Date',item.status)}</div>${fieldInput('meta','Keywords / Additional Details',item.meta)}${fieldInput('description','Description',item.description,'textarea')}${fieldInput('link','External link (optional)',item.link)}${fieldInput('images','Image paths (one per line)',(item.images||[]).join('\n'),'textarea')}</div>`).join('');
+  host.innerHTML=`<p class="hint">Enter paths relative to the site root (for example, <code>assets/${cat==='publicationItems'?'publications':'projects'}/image.jpg</code>). Add as many paths as you want, one per line. Every loaded photo is included in that item’s gallery.</p>`+
+   arr.map((item,i)=>`<div class="item-editor" data-cat="${cat}" data-index="${i}"><div class="item-editor-head"><strong>${esc(item.title||'New item')}</strong><button type="button" class="remove-item" data-cat="${cat}" data-index="${i}">Remove</button></div>${fieldInput('title','Title',item.title)}<div class="editor-pair">${fieldInput('category','Category',item.category)}${fieldInput('status','Status / Date',item.status)}</div>${fieldInput('meta','Keywords / Additional Details',item.meta)}${fieldInput('description','Description',item.description,'textarea')}${fieldInput('link','External link (optional)',item.link)}${fieldInput('images','Gallery photo paths (one file per line; unlimited)',(item.images||[]).join('\n'),'textarea')}</div>`).join('');
  }
 }
 function syncDraftFromEditor(){

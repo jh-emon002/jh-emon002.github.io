@@ -22,12 +22,17 @@
 .item-meta { color:#bdc0ca; font-size:13px; margin:0 0 14px; }
 .item-description { font-size:14px; line-height:1.75; color:#e2e2e7; margin:0; }
 .item-link { color:#ccd8ff; display:inline-flex; margin-top:16px; text-underline-offset:4px; }
-.media-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:minmax(130px,1fr); background:#18191c; gap:3px; padding:3px; }
-.media-gallery:has(.gallery-tile:only-child) { grid-template-columns:1fr; }
-.gallery-tile { border:0; padding:0; margin:0; background:#1b1c20; overflow:hidden; min-height:185px; width:100%; cursor:zoom-in; }
+.media-gallery { display:flex; flex-direction:column; justify-content:center; gap:12px; padding:20px 15px; background:#18191c; min-width:0; }
+.gallery-header { display:flex; justify-content:space-between; gap:10px; color:#cdd2df; font-size:12px; }
+.gallery-heading { font-weight:600; letter-spacing:.5px; }
+.gallery-count { color:#aab5d6; white-space:nowrap; }
+.gallery-strip { display:flex; gap:9px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x mandatory; padding:0 0 9px; scrollbar-color:#646f88 transparent; }
+.gallery-tile { flex:0 0 min(77%,215px); aspect-ratio:4/3; border:1px solid #424751; border-radius:7px; padding:0; margin:0; background:#1b1c20; overflow:hidden; cursor:zoom-in; scroll-snap-align:start; }
 .gallery-tile img { display:block; width:100%; height:100%; object-fit:cover; transition:transform .3s ease; }
 .gallery-tile:hover img { transform:scale(1.045); }
 .gallery-tile:focus-visible { outline:3px solid #cfdaff; outline-offset:-3px; }
+.gallery-open-all { align-self:start; color:#d7e1ff; border:0; background:none; padding:0; font-size:13px; text-decoration:underline; text-underline-offset:4px; }
+.gallery-open-all:hover { color:white; }
 .detail { font-size:15px; line-height:1.85; overflow-wrap:anywhere; }
 .content-section .detail { max-width:1100px; }
 .content-section .section-heading { font-size:clamp(21px,2.5vw,29px); }
@@ -54,14 +59,14 @@
  .showcase-card { grid-template-columns:1fr; }
  .showcase-copy { padding:23px; }
  .showcase-copy h3 { font-size:19px; }
- .gallery-tile { min-height:160px; max-height:290px; }
+ .gallery-tile { flex-basis:min(43%,220px); }
  .catalog-heading h2 { font-size:20px; }
 }
 @media(max-width:520px){
  .catalog-page { width:calc(100% - 28px); }
  .catalog-heading { align-items:center; }
  .catalog-heading h2 { font-size:18px; }
- .gallery-tile { min-height:125px; }
+ .gallery-tile { flex-basis:min(68%,220px); }
  .editor-pair { grid-template-columns:1fr; gap:0; }
  .lightbox-stage { gap:4px; }
  .lightbox-stage img { max-width:calc(100% - 68px); }

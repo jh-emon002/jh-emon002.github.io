@@ -12,7 +12,7 @@ A GitHub Pages-ready academic portfolio populated from the supplied research CV 
 - Achievements: scholarships and Brain of Varendra competition.
 - Education: undergraduate BUET degree and higher secondary college, **no graduate education**.
 - Contact: email, LinkedIn, and GitHub.
-- Images: per-publication and per-project galleries, supporting multiple local files, click-to-enlarge, keyboard left/right, mobile layouts, and graceful handling of missing files.
+- Images: per-publication and per-project galleries, supporting an unlimited number of explicitly listed local files, horizontal scrollable thumbnails, click-to-enlarge, keyboard left/right, mobile layouts, and graceful handling of missing files.
 
 ## Files
 
@@ -32,7 +32,7 @@ assets/
 
 ## Add photos for each publication or project
 
-The image filenames are already configured in `settings.js`. **Copy your own photos to the matching paths** to display them automatically, without editing any code. A few examples:
+Three photo filenames per item are already configured in `settings.js`. **Copy your own photos to any of the matching paths** to display them automatically, without editing any code. A few first-photo examples:
 
 - `assets/publications/federated-sparse-pca.jpg`
 - `assets/publications/motorcycle-safety.jpg`
@@ -44,13 +44,17 @@ The image filenames are already configured in `settings.js`. **Copy your own pho
 
 See `assets/IMAGE_GUIDE.md` for the complete list. The photos **were not included** in the uploaded files, so project/publication cards remain text-only until you provide photos. Missing image paths do not display broken-image icons.
 
-To show multiple photos for a single project or paper, open `settings.js` and add more image paths to that item's `images` array:
+Every project and publication already has three image paths (for example, `wifi8-beamforming.jpg`, `wifi8-beamforming-2.jpg`, and `wifi8-beamforming-3.jpg`). Images appear only if you have supplied the corresponding files. Any combination of the three is fine. A scrollable thumbnail strip avoids making cards excessively tall. Selecting a thumbnail opens a lightbox with arrows and keyboard navigation.
+
+To show **more than three photos** for any project or paper, open `settings.js` and add more image paths to that item's `images` array. There is no per-item image limit:
 
 ```js
 "images": [
   "assets/projects/wifi8-beamforming.jpg",
-  "assets/projects/wifi8-beamforming-2.png",
-  "assets/projects/wifi8-beamforming-3.webp"
+  "assets/projects/wifi8-beamforming-2.jpg",
+  "assets/projects/wifi8-beamforming-3.jpg",
+  "assets/projects/wifi8-beamforming-4.png",
+  "assets/projects/wifi8-beamforming-5.webp"
 ]
 ```
 
@@ -65,7 +69,7 @@ You can also edit image paths through the built-in Customization panel:
 
 The Customize tool is local/browser-only; saving a preview does not publish edits. Other visitors will not see Customize unless they explicitly use `?edit=1`.
 
-**Photo recommendations:** export JPG, PNG, or WebP; aim for at least 1200 pixels on the long edge, compress the images to keep the site fast, and do not upload photos you do not have permission to publish. The gallery will crop thumbnail previews; clicking opens the full image. Images have text-based alt labels generated from the project/publication title.
+**Photo recommendations:** export JPG, PNG, or WebP; aim for at least 1200 pixels on the long edge, compress the images to keep the site fast, and do not upload photos you do not have permission to publish. The gallery uses horizontally scrollable thumbnail previews; clicking opens the full image. Only referenced paths are displayed: adding a fourth file requires adding its path to the `images` array. Images have text-based alt labels generated from the project/publication title.
 
 ## Preview locally
 
