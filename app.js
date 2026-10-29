@@ -10,12 +10,10 @@ const navigation = [
   {id:'skills-achievements', label:'Skills & Achievements'},
   {id:'contact', label:'Contact'}
 ];
-const editableSections = ['Education','Research','Publications','Projects','Experience','Skills','Achievements','Contact'];
 const defaults = {
- name:'Your Name', photo:'', cv:'', masterCv:'', email:'', bio:'', tagline:'', aviation:'',
+ name:'Md Jaied Hasan', photo:'', cv:'', masterCv:'', email:'', bio:'', tagline:'', beyondLab:'',
  socialLinks:{}, sections:{}, publicationItems:[], projectItems:[]
 };
-const editMode = new URLSearchParams(location.search).get('edit') === '1';
 const published = window.PORTFOLIO_CONFIG || {};
 const hydrate = value => ({
  ...structuredClone(defaults), ...value,
@@ -24,14 +22,7 @@ const hydrate = value => ({
  publicationItems:Array.isArray(value.publicationItems) ? value.publicationItems : [],
  projectItems:Array.isArray(value.projectItems) ? value.projectItems : []
 });
-let data = hydrate(published);
-let draftCatalog = {};
-if(editMode){
- try{
-  const saved = JSON.parse(localStorage.getItem('academic-portfolio-v1'));
-  if(saved)data=hydrate({...data,...saved, sections:{...data.sections,...(saved.sections||{})}});
- }catch{}
-}
+const data = hydrate(published);
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const paragraphs = text => String(text || '').trim().split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean);
@@ -59,7 +50,6 @@ function heading(number,label,summary){
 function renderHome(){
  const photo=safeUrl(data.photo,true);
  const bio=paragraphs(data.bio);
- const personal=(data.aviation||'').trim();
  return `<section id="home" class="page-section home-section" aria-labelledby="home-title">
   <div class="container hero-grid">
    <div class="hero-copy"><p class="eyebrow"><span class="eyebrow-rule"></span> ABOUT ME</p>
@@ -76,8 +66,13 @@ function renderHome(){
     <div class="portrait-caption"><span class="caption-symbol" aria-hidden="true">&#9679;</span> EEE, BUET <span class="caption-divider">/</span> Communication &amp; Signal Processing</div>
    </div>
   </div>
-  ${personal?`<div class="container personal-interests"><div class="interests-label"><span class="interests-icon" aria-hidden="true">&#9992;</span><div><span class="micro-label">BEYOND THE LAB</span><h2>Passion for aviation</h2></div></div><p>${esc(personal)}</p></div>`:''}
  </section>`;
+}
+function formatEducationFact(line){
+ const text=String(line||'');
+ if(!/^CGPA\s*:/i.test(text))return esc(text);
+ return esc(text).replace(/(CGPA:\s*[0-9.]+\s*\/\s*[0-9.]+)/i,'<strong class="cgpa-emphasis">$1</strong>')
+                 .replace(/(last four semesters:\s*[0-9.]+\s*\/\s*[0-9.]+)/i,'<strong class="cgpa-emphasis">$1</strong>');
 }
 function renderEducation(){
  const blocks=contentBlocks(data.sections.Education);
@@ -85,7 +80,7 @@ function renderEducation(){
  const awards=blocks.filter(b=>b!==coursework&&!/higher\s+secondary|h\.?s\.?c\.?/i.test(b.title));
  return `<section id="education" class="page-section section-soft" aria-labelledby="education-title"><div class="container">
   ${heading(2,'Education','Academic background and a foundation in electrical engineering.')}
-  <div class="education-grid">${awards.map((block,index)=>`<article class="education-card"><div class="mini-overline">${esc(block.title)}</div><h3>${esc(block.lines[0]||'')}</h3><p class="education-institution">${esc(block.lines[1]||'')}</p><div class="education-facts">${block.lines.slice(2).map(line=>`<p>${esc(line)}</p>`).join('')}</div></article>`).join('')}</div>
+  <div class="education-grid">${awards.map((block,index)=>`<article class="education-card"><div class="mini-overline">${esc(block.title)}</div><h3>${esc(block.lines[0]||'')}</h3><p class="education-institution">${esc(block.lines[1]||'')}</p><div class="education-facts">${block.lines.slice(2).map(line=>`<p>${formatEducationFact(line)}</p>`).join('')}</div></article>`).join('')}</div>
   ${coursework?`<div class="coursework"><h3>${esc(coursework.title)}</h3><div class="pill-list">${coursework.lines.join(' ').split(';').map(x=>x.trim()).filter(Boolean).map(x=>`<span class="course-pill">${esc(x.replace(/[.]$/,''))}</span>`).join('')}</div></div>`:''}
  </div></section>`;
 }
@@ -94,13 +89,11 @@ function renderResearch(){
  const interests=blocks.find(b=>/interests/i.test(b.title));
  const main=blocks.filter(b=>b!==interests);
  const research=main.filter(b=>!/toolkit|methods/i.test(b.title));
- const toolkit=main.filter(b=>/toolkit|methods/i.test(b.title));
  const focus=interests?interests.lines.join(' ').split(';').map(x=>x.trim()).filter(Boolean):[];
  return `<section id="research-publications" class="page-section" aria-labelledby="research-publications-title"><div class="container">
    ${heading(3,'Research & Publications','Current research directions, undergraduate thesis work, and scholarly outputs.')}
    ${focus.length?`<div class="focus-strip"><h3>Research interests</h3><div class="pill-list">${focus.map(x=>`<span class="focus-pill">${esc(x.replace(/[.]$/,''))}</span>`).join('')}</div></div>`:''}
    <div class="research-grid">${research.map(block=>`<article class="research-card"><p class="mini-overline">RESEARCH</p><h3>${esc(block.title)}</h3><p class="preserve-lines">${linkify(block.lines.join('\n'))}</p></article>`).join('')}</div>
-   ${toolkit.map(block=>`<div class="research-toolkit"><h3>${esc(block.title)}</h3><p class="preserve-lines">${linkify(block.lines.join('\n'))}</p></div>`).join('')}
    <div class="subsection-heading publications-heading"><div><p class="mini-overline">RESEARCH OUTPUTS</p><h3>Publications</h3></div><span class="quiet-count">${data.publicationItems.length} entries</span></div>
    ${(data.sections.Publications||'').trim()?`<p class="section-extra preserve-lines">${linkify(data.sections.Publications.trim())}</p>`:''}
    <div class="publications-list">${data.publicationItems.map((item,index)=>renderCatalogItem(item,'publication',index)).join('')}</div>
@@ -164,6 +157,18 @@ function renderContact(){
  </div></section>`;
 }
 
+
+// This personal-interest card is intentionally the final content block, after Contact.
+function renderBeyondLab(){
+ const text=(data.beyondLab||'').trim();
+ if(!text)return '';
+ return `<section class="beyond-section" aria-labelledby="beyond-title"><div class="container">
+   <div class="beyond-card"><div class="beyond-heading"><p class="mini-overline">PERSONAL INTERESTS</p><h2 id="beyond-title">Beyond the Lab</h2>
+   <div class="beyond-tags"><span>Cricket</span><span>Travel</span><span>Aviation</span></div></div>
+   <p>${esc(text)}</p></div>
+ </div></section>`;
+}
+
 let scrollQueued=false;
 function updateActiveNavigation(){
  const links=[...document.querySelectorAll('.site-nav a')];
@@ -207,11 +212,11 @@ function setupProjectFilter(){
 function render(){
  document.title=`${data.name} | Research & Engineering Portfolio`;
  const description=$('meta[name="description"]');if(description)description.content=String(data.bio||'').replace(/\s+/g,' ').slice(0,155);
- $('.brand-name').textContent=(data.name||'Jaied Hasan').replace(/^Md\.\s*/,'');
+ $('.brand-name').textContent=data.name||'Md Jaied Hasan';
  $('.owner').textContent=data.name;
  $('#year').textContent=String(new Date().getFullYear());
  $('.site-nav').innerHTML=navigation.map(link=>`<a href="#${link.id}">${esc(link.label)}</a>`).join('');
- $('#main').innerHTML=renderHome()+renderEducation()+renderResearch()+renderProjects()+renderExperience()+renderSkillsAchievements()+renderContact();
+ $('#main').innerHTML=renderHome()+renderEducation()+renderResearch()+renderProjects()+renderExperience()+renderSkillsAchievements()+renderContact()+renderBeyondLab();
  setupGalleries();setupProjectFilter();requestNavUpdate();
 }
 
@@ -252,7 +257,7 @@ $('#query').addEventListener('input',event=>{
  if(!term){$('#results').innerHTML='';return;}
  const results=[];
  const sectionText={
-  home:[data.name,data.bio,data.tagline,data.aviation].join(' '),
+  home:[data.name,data.bio,data.tagline,data.beyondLab].join(' '),
   education:data.sections.Education||'',
   'research-publications':[data.sections.Research,data.sections.Publications].join(' '),
   projects:data.sections.Projects||'',
@@ -287,94 +292,6 @@ window.addEventListener('scroll',requestNavUpdate,{passive:true});
 window.addEventListener('resize',requestNavUpdate,{passive:true});
 window.addEventListener('hashchange',requestNavUpdate);
 
-// Maintain compatibility with the existing editable settings.js and photo arrays.
-function fieldInput(key,label,value,multiline=false){
- return `<label>${esc(label)}${multiline?`<textarea data-field="${esc(key)}" rows="${key==='description'?4:3}">${esc(value)}</textarea>`:`<input data-field="${esc(key)}" value="${esc(value)}">`}</label>`;
-}
-function renderItemEditors(){
- for(const cat of ['publicationItems','projectItems']){
-  const host=$(`[data-items="${cat}"]`);
-  const arr=draftCatalog[cat]||[];
-  host.innerHTML=`<p class="hint">Each photo path goes on its own line. Use assets/${cat==='publicationItems'?'publications':'projects'}/filename.jpg. There is no image limit.</p>`+
-   arr.map((item,index)=>`<div class="item-editor" data-cat="${cat}" data-index="${index}"><div class="item-editor-head"><strong>${esc(item.title||'New item')}</strong><button class="remove-item" type="button" data-cat="${cat}" data-index="${index}">Remove</button></div>${fieldInput('title','Title',item.title)}<div class="editor-pair">${fieldInput('category','Category',item.category)}${fieldInput('status','Status or date',item.status)}</div>${fieldInput('meta','Tags and extra information',item.meta)}${fieldInput('description','Description',item.description,true)}${fieldInput('link','External link',item.link)}${fieldInput('images','Image paths, one per line',(item.images||[]).join('\n'),true)}</div>`).join('');
- }
-}
-function syncDraftFromEditor(){
- for(const cat of ['publicationItems','projectItems']){
-  draftCatalog[cat]=[...document.querySelectorAll(`.item-editor[data-cat="${cat}"]`)].map(editor=>{
-   const item={};
-   for(const field of editor.querySelectorAll('[data-field]'))item[field.dataset.field]=field.value.trim();
-   item.images=item.images.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
-   return item;
-  });
- }
-}
-$('#page-editors').innerHTML=editableSections.map(name=>`<label>${esc(name)}<textarea name="section-${esc(name)}" rows="5"></textarea></label>`).join('')+
- '<div class="catalog-editor"><h3>Publications and photos</h3><div data-items="publicationItems"></div><button type="button" class="add-item" data-cat="publicationItems">+ Add publication</button></div>'+
- '<div class="catalog-editor"><h3>Projects and photos</h3><div data-items="projectItems"></div><button type="button" class="add-item" data-cat="projectItems">+ Add project</button></div>';
-$('#page-editors').addEventListener('click',event=>{
- const add=event.target.closest('.add-item'),remove=event.target.closest('.remove-item');if(!add&&!remove)return;
- syncDraftFromEditor();const cat=(add||remove).dataset.cat;
- if(add)draftCatalog[cat].push({title:'New '+(cat==='projectItems'?'project':'publication'),category:'Other',status:'',meta:'',description:'',link:'',images:[]});
- if(remove)draftCatalog[cat].splice(Number(remove.dataset.index),1);
- renderItemEditors();
-});
-function openEditor(){
- for(const key of ['name','photo','bio','cv','masterCv','email','tagline','aviation'])$('#editor-form').elements[key].value=data[key]||'';
- for(const key of ['secondaryEmail','linkedin','github','facebook','kaggle'])$('#editor-form').elements['social-'+key].value=data.socialLinks[key]||'';
- for(const name of editableSections)$('#editor-form').elements['section-'+name].value=data.sections[name]||'';
- draftCatalog={publicationItems:structuredClone(data.publicationItems),projectItems:structuredClone(data.projectItems)};
- renderItemEditors();$('#status').textContent='';$('#editor').showModal();
-}
-function readForm(){
- syncDraftFromEditor();const form=$('#editor-form');
- return {
-  name:form.elements.name.value.trim()||'Your Name',
-  photo:form.elements.photo.value.trim(),bio:form.elements.bio.value,
-  tagline:form.elements.tagline.value.trim(),aviation:form.elements.aviation.value.trim(),
-  cv:form.elements.cv.value.trim(),masterCv:form.elements.masterCv.value.trim(),email:form.elements.email.value.trim(),
-  socialLinks:Object.fromEntries(['secondaryEmail','linkedin','github','facebook','kaggle'].map(key=>[key,form.elements['social-'+key].value.trim()])),
-  sections:{...data.sections,...Object.fromEntries(editableSections.map(key=>[key,form.elements['section-'+key].value]))},
-  publicationItems:draftCatalog.publicationItems,projectItems:draftCatalog.projectItems
- };
-}
-$('#customize').hidden=!editMode;
-$('#customize').addEventListener('click',openEditor);
-$('#editor-form').addEventListener('submit',event=>{
- event.preventDefault();
- data=hydrate(readForm());
- try{localStorage.setItem('academic-portfolio-v1',JSON.stringify(data));$('#status').textContent='Private preview saved in this browser.';}
- catch{$('#status').textContent='Preview updated. Download settings.js to keep your edits.';}
- render();
-});
-$('#photo-file').addEventListener('change',event=>{
- const file=event.target.files?.[0];if(!file)return;
- if(file.size>3e6){$('#status').textContent='Choose an image smaller than 3 MB, or use an assets/ path.';return;}
- const reader=new FileReader();reader.onload=()=>{$('#editor-form').elements.photo.value=reader.result};reader.readAsDataURL(file);
-});
-function downloadFile(blob,name){
- const url=URL.createObjectURL(blob),anchor=document.createElement('a');anchor.href=url;anchor.download=name;anchor.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
-$('#publish-config').addEventListener('click',()=>{
- const content='// Your public portfolio data. See README.md for adding images.\nwindow.PORTFOLIO_CONFIG = '+JSON.stringify(readForm(),null,2)+';\n';
- downloadFile(new Blob([content],{type:'text/javascript'}),'settings.js');
- $('#status').textContent='Downloaded settings.js. Commit it and the referenced images to publish.';
-});
-$('#export').addEventListener('click',()=>{
- downloadFile(new Blob([JSON.stringify(readForm(),null,2)],{type:'application/json'}),'portfolio-settings.json');
- $('#status').textContent='Settings backup downloaded.';
-});
-$('#import').addEventListener('change',async event=>{
- try{
-  const imported=JSON.parse(await event.target.files[0].text());
-  if(typeof imported.name!=='string'||!imported.sections||typeof imported.sections!=='object')throw Error('Invalid settings');
-  for(const content of Object.values(imported.sections))if(typeof content!=='string')throw Error('Invalid section');
-  for(const cat of ['publicationItems','projectItems']){
-   if(imported[cat]!==undefined&&(!Array.isArray(imported[cat])||imported[cat].some(item=>!item||typeof item!=='object'||(item.images!==undefined&&!Array.isArray(item.images)))))throw Error('Invalid items');
-  }
-  data=hydrate(imported);$('#editor').close();openEditor();$('#status').textContent='Backup imported. Save preview to apply.';
- }catch{$('#status').textContent='Cannot import that file. Use a valid portfolio settings backup.';}
-});
 
 render();
 // A direct link to a section or catalog item also works when the page first opens.
