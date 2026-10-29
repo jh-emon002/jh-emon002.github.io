@@ -20,7 +20,7 @@ const published = window.PORTFOLIO_CONFIG || {};
 const hydrate = value => ({
  ...structuredClone(defaults), ...value,
  socialLinks:{...(value.socialLinks || {})},
- sections:{...(value.sections || {})},
+ sections:{...(value.sections || {}), ...(typeof value.sections?.Education==='string' ? {Education:value.sections.Education.split(/\n\s*\n/).filter(block=>!/^higher secondary education|^higher secondary certificate|^h\.?s\.?c\.?/i.test(block.trim())).join('\n\n')} : {})},
  publicationItems:Array.isArray(value.publicationItems) ? value.publicationItems : [],
  projectItems:Array.isArray(value.projectItems) ? value.projectItems : []
 });
@@ -82,7 +82,7 @@ function renderHome(){
 function renderEducation(){
  const blocks=contentBlocks(data.sections.Education);
  const coursework=blocks.find(b=>/coursework/i.test(b.title));
- const awards=blocks.filter(b=>b!==coursework);
+ const awards=blocks.filter(b=>b!==coursework&&!/higher\s+secondary|h\.?s\.?c\.?/i.test(b.title));
  return `<section id="education" class="page-section section-soft" aria-labelledby="education-title"><div class="container">
   ${heading(2,'Education','Academic background and a foundation in electrical engineering.')}
   <div class="education-grid">${awards.map((block,index)=>`<article class="education-card"><div class="mini-overline">${esc(block.title)}</div><h3>${esc(block.lines[0]||'')}</h3><p class="education-institution">${esc(block.lines[1]||'')}</p><div class="education-facts">${block.lines.slice(2).map(line=>`<p>${esc(line)}</p>`).join('')}</div></article>`).join('')}</div>
@@ -109,7 +109,7 @@ function renderResearch(){
 function renderCatalogItem(item,kind,index){
  const isPub=kind==='publication';
  const sources=(Array.isArray(item.images)?item.images:[]).map(path=>safeUrl(path,true)).filter(Boolean);
- const gallery=sources.length?`<div class="media-gallery" hidden aria-label="Photos for ${esc(item.title||'item')}"><div class="gallery-meta"><span class="gallery-label">PHOTO GALLERY</span><span class="gallery-count" aria-live="polite"></span></div><div class="gallery-strip">${sources.map((src,i)=>`<button type="button" class="gallery-tile" data-image="${esc(src)}" data-title="${esc(item.title||'Item')}" aria-label="Enlarge photo ${i+1} of ${esc(item.title||'item')}" hidden><img src="${esc(src)}" alt="${esc(item.title||'Item')} - photo ${i+1}" loading="eager" decoding="async"></button>`).join('')}</div></div>`:'';
+ const gallery=sources.length?`<div class="media-gallery" hidden aria-label="Photos for ${esc(item.title||'item')}"><div class="gallery-meta"><span class="gallery-label">IMAGES <span class="gallery-hint">&#183; scroll to explore, click to enlarge</span></span><span class="gallery-count" aria-live="polite"></span></div><div class="gallery-strip">${sources.map((src,i)=>`<button type="button" class="gallery-tile" data-image="${esc(src)}" data-title="${esc(item.title||'Item')}" aria-label="Enlarge photo ${i+1} of ${esc(item.title||'item')}" hidden><img src="${esc(src)}" alt="${esc(item.title||'Item')} - photo ${i+1}" loading="eager" decoding="async"></button>`).join('')}</div></div>`:'';
  const link=safeUrl(item.link);
  return `<article class="work-card ${isPub?'publication-card':'project-card'}" id="${kind}-${index}" ${!isPub?`data-category="${esc(item.category||'Other')}"`:''}>
   <div class="work-meta"><span class="work-category">${esc(item.category|| (isPub?'Publication':'Project'))}</span>${item.status?`<span class="work-status">${esc(item.status)}</span>`:''}</div>
@@ -143,7 +143,7 @@ function renderSkillsAchievements(){
   <div class="subsection-heading"><div><p class="mini-overline">WHAT I WORK WITH</p><h3>Technical skills</h3></div></div>
   <div class="skills-grid">${skills.map(block=>{const tools=block.lines.join(' | ').split(/\s*\|\s*/).map(x=>x.trim()).filter(Boolean);return `<article class="skill-card"><h4>${esc(block.title)}</h4><div class="skill-pills">${tools.map(tool=>`<span>${esc(tool)}</span>`).join('')}</div></article>`}).join('')}</div>
   <div class="subsection-heading achievements-heading"><div><p class="mini-overline">RECOGNITION</p><h3>Honors & Achievements</h3></div></div>
-  <div class="honors-grid">${honors.map(block=>`<article class="honor-card"><h4>${esc(block.title)}</h4><ul>${block.lines.map(line=>`<li>${esc(line)}</li>`).join('')}</ul></article>`).join('')}</div>
+  <article class="honor-card honors-combined"><div class="honor-groups">${honors.map(block=>`<div class="honor-group"><h4>${esc(block.title)}</h4><ul>${block.lines.map(line=>`<li>${esc(line)}</li>`).join('')}</ul></div>`).join('')}</div></article>
  </div></section>`;
 }
 function renderContact(){

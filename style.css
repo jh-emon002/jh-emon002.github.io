@@ -1,14 +1,14 @@
 :root{
-  --ink:#1c2e37;
-  --muted:#60717a;
-  --accent:#176579;
-  --accent-dark:#153f4f;
-  --accent-soft:#e9f4f3;
-  --paper:#ffffff;
-  --canvas:#f8faf9;
-  --soft:#f1f6f5;
-  --line:#dde6e5;
-  --dark:#17333e;
+  --ink:#e9f1f3;
+  --muted:#a0b0ba;
+  --accent:#70d9c7;
+  --accent-dark:#2b8d88;
+  --accent-soft:#1b383b;
+  --paper:#19252e;
+  --canvas:#111c24;
+  --soft:#1b2b33;
+  --line:#32434d;
+  --dark:#0e171e;
   --radius:15px;
   --header-height:78px;
 }
@@ -318,3 +318,124 @@ dialog legend{font-size:14px;font-weight:700;color:var(--ink);padding-inline:7px
  .lightbox-stage button{flex-basis:30px;width:30px;height:42px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.site-nav a,.site-nav a::after,.gallery-tile img{transition:none}}
+
+
+/* Dark edition: low-glare slate surfaces, understated mint signals. */
+:root{color-scheme:dark}
+body{background:#0e171e;color:var(--ink)}
+::selection{background:#315e5c;color:#f3fbfa}
+.site-header{background:rgba(13,22,29,.94);border-bottom-color:#283943}
+.brand{color:#e7f0f2}
+.brand-mark{background:#172b34;border:1px solid #385e60;box-shadow:inset 0 0 0 1px #12232a}
+.brand-mark svg{width:31px;height:31px}
+.site-nav a{color:#9aacb6}
+.site-nav a:hover,.site-nav a.active{color:#c5f7ec}
+.search-trigger{background:#1b2a33;color:#eaf4f5;border-color:#38505a}
+.search-trigger:hover{background:#29404a;border-color:#56817f}
+.skip-link{background:#d6f7ed;color:#15262a}
+.page-section.section-soft{background:#121e26;border-color:#20323c}
+.section-count,.mini-overline,.micro-label,.eyebrow,.gallery-label{color:#85d9cb}
+.section-intro h2,.subsection-heading h3{color:#f0f6f7}
+.section-intro p,.section-extra{color:#9eaeb8}
+.preserve-lines a{color:#96e4d8}
+.home-section{background:radial-gradient(ellipse at 77% 18%,#1e3437 0%,#132129 32%,#0e171e 68%)}
+.hero-copy h1{color:#f3f8f9}
+.hero-tagline{color:#8ddfd1}
+.hero-bio p{color:#aabac3}
+.hero-bio .hero-lead{color:#d4e3e8}
+.button-primary{background:#67c4b5;border-color:#67c4b5;color:#10252a}
+.button-primary:hover{background:#91e0d2;border-color:#91e0d2}
+.button-secondary{background:#1b2a33;color:#e9f5f5;border-color:#49626a}
+.button-secondary:hover{background:#243740;border-color:#78bdb6}
+.subtle-link{color:#9de7d9}
+.hero-grid{grid-template-columns:minmax(0,1.38fr) minmax(255px,.78fr);gap:clamp(38px,5vw,78px)}
+.hero-visual{justify-self:center;max-width:355px}
+.portrait-frame{width:100%;max-width:355px;border-radius:19px;background:#34494e;box-shadow:0 17px 42px #0005}
+.portrait-frame::after{box-shadow:inset 0 0 0 1px #e0fffa22}
+.photo-fallback{color:#9de8dd}
+.portrait-caption{color:#a4bdc0;font-size:11.5px}
+.caption-symbol{color:#78d8c2}.caption-divider{color:#5a7880}
+.personal-interests{border-color:#344650}
+.personal-interests p{color:#9db3bc}
+.education-grid{grid-template-columns:minmax(0,1fr)}
+.education-card{max-width:920px}
+.education-card,.research-card,.skill-card,.honor-card,.work-card{background:#19262e;border-color:#34434b;box-shadow:0 5px 22px #00000014}
+.education-card h3,.research-card h3,.work-card h4,.skill-card h4,.honor-card h4{color:#edf4f6}
+.education-institution{color:#c2d4d9}
+.education-facts{border-top-color:#34434b}
+.education-facts p{color:#adbdc5}
+.course-pill,.focus-pill{background:#1e3038;border-color:#405960;color:#c2e3dc}
+.coursework h3{color:#e8f3f4}
+.focus-strip{background:#1b3035;border-color:#39585b}
+.focus-strip h3{color:#edf4f6}
+.research-card p.preserve-lines{color:#aebfc5}
+.research-toolkit{background:#213039;border:1px solid #384a51}
+.research-toolkit h3{color:#eaf1f3}
+.research-toolkit p{color:#b7c7ce}
+.project-toolbar p,.quiet-count{color:#a6b6bf}
+.filter-label{color:#b9c8ce}
+.filter-label select{background:#1e3038;border-color:#42545e;color:#edf4f6}
+.work-category{color:#8edfd1}
+.work-status{background:#283c42;color:#c5d9de}
+.work-keywords{color:#9bded3}
+.work-description{color:#acbdc6}
+.work-link{color:#96e8da}
+.media-gallery{border-color:#3b4d53}
+.gallery-hint{color:#91aab2;font-size:10px;font-weight:500;letter-spacing:.1px;text-transform:none}
+.gallery-count{color:#aebfc8}
+.gallery-strip{scrollbar-color:#54756f transparent;scrollbar-width:thin}
+.gallery-tile{background:#2a3c44;border-color:#48616a;flex-basis:151px;width:151px;height:105px}
+.publication-card .gallery-tile{flex-basis:166px;width:166px;height:115px}
+.gallery-tile:hover{border-color:#8fe2d2}
+.experience-list{border-color:#36555a}
+.timeline-point{background:#183037;border-color:#80dcce;box-shadow:0 0 0 4px #20363b}
+.experience-place{color:#9be4d9}
+.experience-detail{color:#adbec5}
+.skill-pills span{background:#22343d;border-color:#3b5359;color:#d0e5e8}
+/* One continuous card contains every honors group; no separate award cells. */
+.honors-combined{padding:28px 32px;max-width:980px}
+.honor-groups{display:grid;gap:22px}
+.honor-group + .honor-group{border-top:1px solid #3b4d55;padding-top:21px}
+.honor-group h4{color:#e6f0f2;font-size:16px;margin:0 0 8px}
+.honor-group ul{margin:0;padding-left:20px;color:#b0c1c8;font-size:13.5px;line-height:1.85}
+.honor-group li{padding-left:4px;margin:4px 0}
+.honor-group li::marker{color:#7ad4c5}
+.contact-section{background:linear-gradient(145deg,#101f27,#0b151b 72%);border-top:1px solid #244047}
+.contact-section .section-count{color:#8edccf}
+.contact-section .section-intro p{color:#a8bec5}
+.contact-copy-block p{color:#b2c8ce}
+.contact-card{background:#1a2b34;border-color:#35545c}
+.contact-card:hover{background:#25404a;border-color:#6eaeab}
+.contact-monogram{background:#2c5055;color:#e5fcf8}
+.contact-labels small{color:#b6ced3}
+.contact-cvs .button-inverted{color:#10262a;background:#b3e7db;border-color:#b3e7db}
+.contact-cvs .button-inverted:hover{background:#e0faf2}
+.contact-cvs .button-ghost{border-color:#5c7a80;color:#dbeff0;background:#172a32}
+.contact-cvs .button-ghost:hover{background:#2b434d}
+.footer{background:#0a1217;color:#9bb0b8;border-top:1px solid #23323a}
+.footer a{color:#c6eae2}
+.customize{background:#274a50;border-color:#629b92;color:#f2fafa}
+/* Editor, search and lightbox match the dark theme as well. */
+dialog{background:#18262f;color:#edf5f6;border-color:#405860;box-shadow:0 24px 90px #0009}
+dialog::backdrop{background:#02080bcc}
+.dialog-top h2,dialog legend{color:#edf4f6}
+.dialog-overline{color:#9ce2d5}
+.close{color:#d7e6e8}
+.hint{color:#9fb4bf}
+dialog label{color:#bdcfd4}
+dialog input:not([type=file]),dialog textarea,dialog select{background:#111d24;border-color:#40535a;color:#e9f5f6}
+dialog fieldset{border-color:#40535a}
+.item-editor{background:#1d3038;border-color:#456067}
+.remove-item{border-color:#7a5057;color:#f4a8a9}
+.add-item{background:#264941;border-color:#4c7b70;color:#d9f6ec}
+#status{color:#b8edd9}
+#results a{border-color:#3a4f58}
+#results a:hover{background:#273c44}
+#results a strong{color:#e4eff1}
+#results a small,.no-results{color:#afbec6}
+#lightbox{background:#0d1920;border-color:#41636a}
+.lightbox-top p{color:#dcecec}
+.lightbox-stage button{background:#213b45;border-color:#55747b}
+@media(max-width:1050px){.hero-grid{grid-template-columns:minmax(0,1.16fr) minmax(230px,.78fr);gap:30px}.hero-visual{max-width:300px}}
+@media(max-width:760px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(138px,31%);gap:8px 20px}.hero-visual{max-width:210px}.portrait-frame{max-width:210px}}
+@media(max-width:520px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(112px,32%);column-gap:12px}.hero-visual,.portrait-frame{max-width:175px}.honors-combined{padding:23px 21px}.gallery-tile,.publication-card .gallery-tile{flex-basis:132px;width:132px;height:95px}.gallery-hint{display:none}}

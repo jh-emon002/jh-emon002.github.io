@@ -1,6 +1,6 @@
 # Md. Jaied Hasan - Single-Page Portfolio
 
-A minimal, responsive academic and engineering portfolio. It is a single scrollable page, not a multi-page website, and is ready for GitHub Pages. The content is drawn from the supplied and previously updated `settings.js` and preserves the existing publication/project photo references.
+A minimal, responsive dark-themed academic and engineering portfolio. It is a single scrollable page, not a multi-page website, and is ready for GitHub Pages. The content is drawn from the supplied and previously updated `settings.js` and preserves the existing publication/project photo references.
 
 ## Layout and navigation
 
@@ -14,7 +14,7 @@ The top navigation stays visible while scrolling and links to exactly seven sect
 6. Skills & Achievements
 7. Contact
 
-On desktop, Home displays the introduction and About Me on the left, with the portrait on the right. On smaller screens, the portrait appears beside the intro, followed by the longer About Me text. On mobile, swipe the top navigation horizontally to reach links that are outside the screen.
+On desktop, Home displays the introduction and About Me on the left, with a smaller portrait on the right. On smaller screens, the portrait appears beside the intro, followed by the longer About Me text. On mobile, swipe the top navigation horizontally to reach links that are outside the screen.
 
 The Projects section includes a category filter. The search icon in the top bar can find sections, publications, projects and technical skills.
 
@@ -22,10 +22,10 @@ The Projects section includes a category filter. The search icon in the top bar 
 
 ```text
 index.html                 Site HTML, search, image viewer, and edit dialogs
-style.css                  Responsive light theme, sticky nav, section styles
+style.css                  Responsive dark slate theme, sticky nav, section styles
 app.js                     Single-page sections, search, gallery, editor
 settings.js                All public profile and portfolio content
-favicon.svg                New minimal JH monogram icon
+favicon.svg                New wireless signal and PCB trace favicon
 .nojekyll                  GitHub Pages helper
 assets/
   portrait.jpg             Current portrait
@@ -81,6 +81,14 @@ For a repository using a different deployment branch, push to that branch instea
 
 ## Notes on sources and statuses
 
-The website includes 3 publication entries and 17 projects. Their descriptions, statuses and image paths come from the previous updated `settings.js`, based on the user's CV and GitHub README. Accepted or submitted items have not been relabeled as published work. Education includes only undergraduate and higher-secondary studies, not graduate education.
+The website includes 3 publication entries and 17 projects. Their descriptions, statuses and image paths come from the previous updated `settings.js`, based on the user's CV and GitHub README. Accepted or submitted items have not been relabeled as published work. Education displays only the undergraduate BUET degree (plus selected coursework). Higher-secondary and graduate education have been removed.
 
-The favicon is an original minimal `JH` monogram. It replaces the earlier site icon.
+The favicon is a custom wireless-signal and PCB-trace motif, matching the new header symbol.
+
+## Dark theme and achievements
+
+The site uses low-glare slate backgrounds and teal accents. All scholarships and competition honors appear within **one achievements card**. The separate headings inside it remain editable via the `Achievements` text field.
+
+## Image gallery performance recommendations
+
+You may add as many image paths as needed to each `images` array. For efficient loading on GitHub Pages, prefer compressed WebP/JPEG images (roughly 100-300 KB for thumbnails, if practical). Store the files in `assets/projects/` or `assets/publications/`, and commit them alongside `settings.js`. The thumbnail strip scrolls horizontally; tapping a thumbnail opens its full-size viewer with keyboard/arrow navigation. Missing files stay hidden.
