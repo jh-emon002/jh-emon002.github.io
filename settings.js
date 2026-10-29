@@ -16,42 +16,40 @@ window.PORTFOLIO_CONFIG = {
   },
   "publicationItems": [
     {
-      "title": "Federated Sparse PCA with Differential Privacy Using a Correlated-Noise Mechanism",
+      "title": "CAPE-SPCA: Efficient Differentially Private Federated Sparse PCA using Correlated Noise for Horizontally Partitioned Data",
       "category": "Journal manuscript",
-      "status": "Under review",
+      "status": "Under review at Journal of the Franklin Institute · 2026",
       "meta": "Based on undergraduate thesis",
       "description": "Privacy-preserving, federated sparse principal-component analysis with a correlated-noise mechanism. Evaluates privacy–utility, sparsity, convergence, reconstruction, and communication-efficiency trade-offs.",
       "link": "",
       "images": [
-        "assets/publications/federated-sparse-pca.jpg",
-        "assets/publications/federated-sparse-pca-2.jpg",
-        "assets/publications/federated-sparse-pca-3.jpg"
+        "assets/publications/img1.png",
+        "assets/publications/img2.png",
+        "assets/publications/img3.png"
       ]
     },
     {
       "title": "An Integrated Dual-Module Cyber Physical System for Motorcycle Safety: Utilizing Pre-Ride Safety, Crash Detection and Swift Response with Mobile Application Companion",
       "category": "Conference paper",
-      "status": "Accepted · 2026",
+      "status": "Accepted at IEEE iCACCESS 2026 · To be published",
       "meta": "Motorcycle safety · IoT · Cyber-physical systems",
       "description": "Conference paper on the integrated pre-ride safety, crash detection, emergency-response, and mobile companion system. Venue and publication link can be added once available.",
       "link": "",
       "images": [
-        "assets/publications/motorcycle-safety.jpg",
-        "assets/publications/motorcycle-safety-2.jpg",
-        "assets/publications/motorcycle-safety-3.jpg"
+        "assets/publications/img4.png",
+        "assets/publications/img5.png"
       ]
     },
     {
-      "title": "ML-Based Mobile Traffic Forecasting for Network-Capacity Planning",
+      "title": "Risk-Aware Mobile Traffic Capacity Provisioning via Residual Learning and Conformal Prediction",
       "category": "Conference submission",
-      "status": "Submitted · 2026",
+      "status": "Submitted to IEEE ICECE 2026",
       "meta": "Traffic forecasting · Bandwidth planning",
       "description": "Conference submission based on mobile-internet traffic forecasting with XGBoost, GRU, and LSTM models, with MAE/RMSE benchmarking to support data-driven network capacity planning. Title is descriptive; update to the final submitted title if different.",
       "link": "",
       "images": [
-        "assets/publications/mobile-traffic-forecasting.jpg",
-        "assets/publications/mobile-traffic-forecasting-2.jpg",
-        "assets/publications/mobile-traffic-forecasting-3.jpg"
+        "assets/publications/img6.png",
+        "assets/publications/img7.png"
       ]
     }
   ],
