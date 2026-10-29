@@ -1,9 +1,9 @@
 'use strict';
-const pages = ['Home', 'Research', 'Publications', 'Projects', 'Experience', 'Achievements', 'Education', 'Contact'];
-const defaults = {name:'Your Name', photo:'', cv:'', masterCv:'', email:'', bio:'', sections:{Research:'',Publications:'',Projects:'',Experience:'',Achievements:'',Education:'',Contact:''}, publicationItems:[],projectItems:[]};
+const pages = ['Home', 'Research', 'Publications', 'Projects', 'Experience', 'Skills', 'Achievements', 'Education', 'Contact'];
+const defaults = {name:'Your Name', photo:'', cv:'', masterCv:'', email:'', bio:'', tagline:'', aviation:'', socialLinks:{}, sections:{Research:'',Publications:'',Projects:'',Experience:'',Skills:'',Achievements:'',Education:'',Contact:''}, publicationItems:[],projectItems:[]};
 const editMode = new URLSearchParams(location.search).get('edit') === '1';
 const published = window.PORTFOLIO_CONFIG || {};
-const hydrate = v => ({...structuredClone(defaults),...v, sections:{...defaults.sections,...(v.sections||{})}, publicationItems:Array.isArray(v.publicationItems)?v.publicationItems:[],projectItems:Array.isArray(v.projectItems)?v.projectItems:[]});
+const hydrate = v => ({...structuredClone(defaults),...v, socialLinks:{...defaults.socialLinks,...(v.socialLinks||{})}, sections:{...defaults.sections,...(v.sections||{})}, publicationItems:Array.isArray(v.publicationItems)?v.publicationItems:[],projectItems:Array.isArray(v.projectItems)?v.projectItems:[]});
 let data = hydrate(published), draftCatalog = {};
 if(editMode){try{const saved=JSON.parse(localStorage.getItem('academic-portfolio-v1'));if(saved)data=hydrate({...data,...saved,sections:{...data.sections,...saved.sections}})}catch{}}
 const $ = s => document.querySelector(s);
@@ -17,7 +17,33 @@ function linkify(text){return esc(text).replace(/https?:\/\/[^\s<>"']+/g,part=>`
 function renderTextPage(page){
   const content=(data.sections[page]||'').trim();
   const blocks=content?content.split(/\n\s*\n/):[];
-  return `<section class="inner-hero"><h1>${esc(page==='Research'?'Research Interests':page)}</h1></section><div class="page-content">${blocks.map(b=>{const [heading,...body]=b.split('\n');return `<section class="content-section"><h2 class="section-heading">${esc(heading)}</h2><div class="detail"><p>${linkify(body.join('\n'))}</p></div></section>`}).join('')}${!blocks.length?'<p class="detail empty-note">Content will be added soon.</p>':''}${page==='Contact'&&data.email?`<div class="detail contact-email"><a class="contact-link" href="mailto:${esc(data.email)}">Email ${esc(data.name)}</a></div>`:''}</div>`;
+  return `<section class="inner-hero"><h1>${esc(page==='Research'?'Research Interests':page)}</h1></section><div class="page-content">${blocks.map(b=>{const [heading,...body]=b.split('\n');return `<section class="content-section"><h2 class="section-heading">${esc(heading)}</h2><div class="detail"><p>${linkify(body.join('\n'))}</p></div></section>`}).join('')}${!blocks.length?'<p class="detail empty-note">Content will be added soon.</p>':''}</div>`;
+}
+function renderSkillsPage(){
+ const content=(data.sections.Skills||'').trim();
+ const blocks=content?content.split(/\n\s*\n/):[];
+ const cards=blocks.map(block=>{
+   const [heading,...lines]=block.split('\n');
+   const tools=lines.join(' | ').split(/\s*\|\s*/).map(t=>t.trim()).filter(Boolean);
+   return `<article class="skills-card"><h2>${esc(heading)}</h2><div class="skill-tags">${tools.map(tool=>`<span class="skill-tag">${esc(tool)}</span>`).join('')}</div></article>`;
+ }).join('');
+ return `<section class="inner-hero"><div class="catalog-hero"><p class="catalog-eyebrow">TECHNOLOGIES & METHODS</p><h1>Skills & Tools</h1><p>Programming, wireless research, machine learning, electronics, and practical engineering tools.</p></div></section><section class="skills-page"><div class="skills-grid">${cards}</div></section>`;
+}
+function renderContactPage(){
+ const social=data.socialLinks||{};
+ const links=[];
+ const emailLink=(label,email,monogram)=>{
+   if(typeof email!=='string'||!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email))return;
+   links.push({label,subtitle:email,mark:monogram,href:'mailto:'+encodeURIComponent(email),external:false});
+ };
+ emailLink('Primary email',data.email,'@');
+ emailLink('BUET email',social.secondaryEmail,'@');
+ for(const [key,label,mark] of [['linkedin','LinkedIn','in'],['github','GitHub','GH'],['facebook','Facebook','f'],['kaggle','Kaggle','K']]){
+   const url=safeUrl(social[key]);
+   if(url)links.push({label,subtitle:social[key],mark,href:url,external:true});
+ }
+ const cards=links.map(link=>`<a class="social-card" href="${esc(link.href)}" ${link.external?'target="_blank" rel="noopener noreferrer"':''}><span class="social-mark" aria-hidden="true">${esc(link.mark)}</span><span class="social-copy"><strong>${esc(link.label)}</strong><span>${esc(link.subtitle)}</span></span><span class="social-arrow" aria-hidden="true">&#8599;</span></a>`).join('');
+ return renderTextPage('Contact')+`<section class="contact-cards-wrap" aria-label="Email and social profiles"><h2>Find me online</h2><div class="social-grid">${cards}</div></section>`;
 }
 function renderCatalog(page){
  const isPub=page==='Publications',items=isPub?data.publicationItems:data.projectItems;
@@ -65,11 +91,15 @@ function render(){
  $('nav').classList.remove('open');$('#menu').setAttribute('aria-expanded','false');
  if(page==='Home'){
    const portrait=safeUrl(data.photo,true);
-   $('#main').innerHTML=`<section class="hero" aria-label="Profile banner">${circuits()}<div class="portrait">${portrait?`<img src="${esc(portrait)}" alt="Portrait of ${esc(data.name)}">`:`<svg viewBox="0 0 200 220" fill="#aaa" aria-hidden="true"><circle cx="100" cy="70" r="39"/><path d="M22 205v-25a78 78 0 0 1 156 0v25z"/></svg><small>YOUR PORTRAIT</small>`}</div><a href="#about" class="down" aria-label="Scroll to About Me">⌄</a></section><h2 class="name-band">${esc(data.name.toUpperCase())}</h2><section id="about" class="about"><h1>About Me</h1><p>${esc(data.bio)}</p></section><div class="cv-band">${safeUrl(data.cv)?`<a class="outline-btn" href="${esc(safeUrl(data.cv))}" target="_blank" rel="noopener noreferrer">Academic CV ↗</a>`:(editMode?'<button class="outline-btn" id="add-cv">Add your Academic CV</button>':'<a class="outline-btn" href="#contact">Get in touch</a>')}${safeUrl(data.masterCv)?`<a class="outline-btn" href="${esc(safeUrl(data.masterCv))}" target="_blank" rel="noopener noreferrer">Full CV ↗</a>`:''}</div>`;
+   const aviation=(data.aviation||'').trim();
+   $('#main').innerHTML=`<section class="hero" aria-label="Profile banner">${circuits()}<div class="portrait">${portrait?`<img src="${esc(portrait)}" alt="Portrait of ${esc(data.name)}">`:`<svg viewBox="0 0 200 220" fill="#aaa" aria-hidden="true"><circle cx="100" cy="70" r="39"/><path d="M22 205v-25a78 78 0 0 1 156 0v25z"/></svg><small>YOUR PORTRAIT</small>`}</div><a href="#about" class="down" aria-label="Scroll to About Me">&#8964;</a></section><h2 class="name-band">${esc(data.name.toUpperCase())}</h2>${data.tagline?`<p class="home-tagline">${esc(data.tagline)}</p>`:''}<section id="about" class="about"><h1>About Me</h1><p>${esc(data.bio)}</p></section><div class="cv-band">${safeUrl(data.cv)?`<a class="outline-btn" href="${esc(safeUrl(data.cv))}" target="_blank" rel="noopener noreferrer">Academic CV &#8599;</a>`:(editMode?'<button class="outline-btn" id="add-cv">Add your Academic CV</button>':'<a class="outline-btn" href="#contact">Get in touch</a>')}${safeUrl(data.masterCv)?`<a class="outline-btn" href="${esc(safeUrl(data.masterCv))}" target="_blank" rel="noopener noreferrer">Full CV &#8599;</a>`:''}</div>${aviation?`<section class="personal-note" aria-labelledby="aviation-title"><div class="personal-note-inner"><p class="personal-eyebrow">BEYOND ENGINEERING</p><h2 id="aviation-title">Passion for Fighter Jets</h2><p>${esc(aviation)}</p></div></section>`:''}`;
    $('#add-cv')?.addEventListener('click',openEditor);
- }else $('#main').innerHTML=['Publications','Projects'].includes(page)?renderCatalog(page):renderTextPage(page);
+ }else if(page==='Skills')$('#main').innerHTML=renderSkillsPage();
+ else if(page==='Contact')$('#main').innerHTML=renderContactPage();
+ else $('#main').innerHTML=['Publications','Projects'].includes(page)?renderCatalog(page):renderTextPage(page);
  activateGalleries();
 }
+
 function circuits(){let paths='';for(let side=0;side<2;side++){let lines='';for(let i=0;i<15;i++){let y=180+i*34,x=(i*67)%280,mid=310+(i%4)*25,end=500+((i*29)%150),ey=y+(i%2?65:-65);lines+=`<path d="M ${x} ${y} H ${mid-100} L ${mid} ${ey} H ${end}"/><circle cx="${x}" cy="${y}" r="${i%3?4:9}"/><circle cx="${end}" cy="${ey}" r="4"/>`;}paths+=`<g transform="${side?'translate(1400 0) scale(-1 1)':''}">${lines}<path d="M35 130 H175 L245 200 H400 M80 810 H240 L290 760 H490 M300 890 H700 L760 950 M515 78 H700 L730 48 H940"/></g>`}return `<svg class="circuit" viewBox="0 0 1400 970" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#777" stroke-width="2.5">${paths}</g><g fill="none" stroke="#777" stroke-width="2"><circle cx="700" cy="500" r="290"/><circle cx="700" cy="500" r="225"/></g><circle cx="700" cy="500" r="214" fill="#030303"/></svg>`}
 
 // Lightbox uses the images currently visible in the selected item.
@@ -127,14 +157,15 @@ pageEditor.addEventListener('click',event=>{
  renderItemEditors();
 });
 function openEditor(){
- for(const key of ['name','photo','bio','cv','masterCv','email'])$('#editor-form').elements[key].value=data[key]||'';
+ for(const key of ['name','photo','bio','cv','masterCv','email','tagline','aviation'])$('#editor-form').elements[key].value=data[key]||'';
+ for(const key of ['linkedin','github','facebook','kaggle','secondaryEmail'])$('#editor-form').elements['social-'+key].value=data.socialLinks[key]||'';
  for(const p of textPages)$('#editor-form').elements['section-'+p].value=data.sections[p]||'';
  draftCatalog={publicationItems:structuredClone(data.publicationItems),projectItems:structuredClone(data.projectItems)};
  renderItemEditors();$('#status').textContent='';$('#editor').showModal();
 }
 function readForm(){
  syncDraftFromEditor();const f=$('#editor-form');
- return {name:f.elements.name.value.trim()||'Your Name',photo:f.elements.photo.value.trim(),cv:f.elements.cv.value.trim(),masterCv:f.elements.masterCv.value.trim(),email:f.elements.email.value.trim(),bio:f.elements.bio.value,
+ return {name:f.elements.name.value.trim()||'Your Name',photo:f.elements.photo.value.trim(),cv:f.elements.cv.value.trim(),masterCv:f.elements.masterCv.value.trim(),email:f.elements.email.value.trim(),bio:f.elements.bio.value,tagline:f.elements.tagline.value.trim(),aviation:f.elements.aviation.value.trim(),socialLinks:Object.fromEntries(['linkedin','github','facebook','kaggle','secondaryEmail'].map(k=>[k,f.elements['social-'+k].value.trim()])),
  sections:{...data.sections,...Object.fromEntries(textPages.map(p=>[p,f.elements['section-'+p].value]))},publicationItems:draftCatalog.publicationItems,projectItems:draftCatalog.projectItems};
 }
 $('#customize').hidden=!editMode;$('#customize').onclick=openEditor;
@@ -170,7 +201,7 @@ $('#search').onclick=()=>{$('#search-dialog').showModal();$('#query').focus()};
 $('#query').oninput=e=>{
  const q=e.target.value.toLowerCase().trim();if(!q){$('#results').innerHTML='';return}
  const matches=[];
- for(const p of pages){const haystack=(p+' '+(p==='Home'?data.bio:data.sections[p]||'')).toLowerCase();if(haystack.includes(q))matches.push({page:p,label:p,subtitle:`View ${p.toLowerCase()}`})}
+ for(const p of pages){const haystack=(p+' '+(p==='Home'?[data.bio,data.aviation,data.tagline].join(' '):data.sections[p]||'')).toLowerCase();if(haystack.includes(q))matches.push({page:p,label:p,subtitle:`View ${p.toLowerCase()}`})}
  for(const [cat,page] of [['publicationItems','Publications'],['projectItems','Projects']]){
    data[cat].forEach((item,i)=>{if([item.title,item.description,item.meta,item.status,item.category].join(' ').toLowerCase().includes(q))matches.push({page,label:item.title,subtitle:item.category||page,target:`${page==='Projects'?'project':'publication'}-${i}`})})
  }

@@ -1,4 +1,4 @@
-// Your public portfolio data. See README.md for adding images.
+// Portfolio content: README-informed updates built on the user-supplied settings.js.
 window.PORTFOLIO_CONFIG = {
   "name": "Md. Jaied Hasan",
   "photo": "assets/portrait.jpg",
@@ -12,7 +12,8 @@ window.PORTFOLIO_CONFIG = {
     "Experience": "Research Assistant · BUET\nDepartment of Electrical and Electronic Engineering | September 2026 – Present\nResearch with Professor Dr. Md. Forkan Uddin on Wi-Fi 8 multi-AP coordination, coordinated beamforming, inter-cluster interference, and WLAN optimization. Developed and evaluated Python-based network simulations covering PHY/MAC behavior and spatial throughput.\n\nMachine Learning Intern · FlyRank AI\nRemote | August 2026 – Present\nDeveloped a pipeline to detect and rank declining content across more than 23,000 webpages using historical traffic and trend-based features. Worked on feature engineering, Precision@K evaluation, model diagnostics, time/group-aware validation, leakage audits, and failure analysis.\n\nIndustrial Attachment · Banglalink Digital Ltd.\n18–25 November 2025\nCompleted an industrial attachment at Banglalink Digital Ltd.\n\nAcademic Team Member · Bangladesh Mathematical Olympiad\nNovember 2022 – December 2025\nServed as an Academic Team Member.",
     "Achievements": "Scholarships & Academic Recognition\nDean’s List Scholarship — Level 1 and Level 3, BUET\nUniversity Merit Scholarship — BUET\nShamsul Huda Chowdhury Scholarship — BUET\nProfessor Dr. Ahmad Ullah and Mrs. Chemanara Ahmad Ullah Trust Fund Scholarship — BUET\n\nCompetitions\n1st Runner-Up — Brain of Varendra, talent-hunt competition organized by Varendra University, Rajshahi.",
     "Education": "Undergraduate Education\nBachelor of Science in Electrical and Electronic Engineering\nBangladesh University of Engineering and Technology (BUET), Dhaka\nJanuary 2022 – June 2026\nMajor: Communication and Signal Processing\nCGPA: 3.80/4.00 (Top 27%); last four semesters: 3.85/4.00\n\nHigher Secondary Education\nHigher Secondary Certificate (Science)\nNew Govt. Degree College, Rajshahi\nJune 2018 – April 2020\nGPA: 5.00/5.00\n\nSelected Coursework\nWireless Communications; Communication Systems I & II; Digital Signal Processing; Linear Algebra; Probability and Statistics; Artificial Intelligence and Machine Learning; Radar and Satellite Communications; Microprocessor and Embedded Systems; Control Systems.",
-    "Contact": "Get in Touch\nEmail: mdjaiedhasan02@gmail.com\nLinkedIn: https://www.linkedin.com/in/md-jaied-hasan\nGitHub: https://github.com/jh-emon002\n\nAcademic Affiliation\nDepartment of Electrical and Electronic Engineering\nBangladesh University of Engineering and Technology (BUET)\nDhaka, Bangladesh"
+    "Contact": "Get in Touch\nI welcome discussions about research collaboration, wireless systems, machine learning, and practical engineering. Use the contact links below to reach me.\n\nAcademic Affiliation\nDepartment of Electrical and Electronic Engineering\nBangladesh University of Engineering and Technology (BUET)\nDhaka, Bangladesh",
+    "Skills": "Programming\nPython | MATLAB | C | C++ | Verilog\n\nSimulation & Design\nROS | Keil | Proteus | PSpice | AutoCAD | MATLAB/Simulink\n\nEmbedded Systems\nArduino | ESP32 | Raspberry Pi | FPGA | ESP32-CAM\n\nAI & Machine Learning\nPyTorch | TensorFlow | Keras | Scikit-learn | Pandas | XGBoost | Hugging Face Transformers | GRU/LSTM\n\nPCB Design\nKiCad\n\nApp Development\nMIT App Inventor\n\nWireless & Signal Processing\nWi-Fi 8 / IEEE 802.11bn | Multi-AP Coordination | Coordinated Beamforming | CSMA/CA | Directional Channel Modeling | SINR Analysis | Digital Signal Processing\n\nDevelopment & Research Tools\nGit/GitHub | Linux | NumPy | Federated Learning | Differential Privacy | Time-Series Forecasting"
   },
   "publicationItems": [
     {
@@ -84,8 +85,8 @@ window.PORTFOLIO_CONFIG = {
       "title": "Multilingual Toxicity Classification with Knowledge Distillation",
       "category": "Machine Learning & Data Science",
       "status": "HerWILL AI for Digital Safety Datathon 2026",
-      "meta": "XLM-RoBERTa · NLP · Knowledge distillation",
-      "description": "Built a teacher–student pipeline for Bangla, English, and Banglish/code-mixed harmful-content classification. Fine-tuned an XLM-RoBERTa teacher on a 47K+ sample three-class dataset and designed an approximately 5M-parameter byte-level BPE student, achieving approximately 55× parameter compression.",
+      "meta": "XLM-RoBERTa | ByteBPE | Knowledge distillation | NLP",
+      "description": "Developed an XLM-RoBERTa teacher-student pipeline for Bangla, English, and Banglish harmful-content classification at the HerWILL AI for Digital Safety Datathon 2026. Used stratified 5-fold out-of-fold distillation, class-weighted training, temperature scaling, and macro-F1 bias calibration; trained a compact byte-level BPE student with mean/max pooling, reporting 0.344 F1NOP. The 47K+ sample teacher and approximately 5M-parameter student achieved about 55x parameter compression.",
       "link": "",
       "images": [
         "assets/projects/toxicity-classification.jpg",
@@ -98,7 +99,7 @@ window.PORTFOLIO_CONFIG = {
       "category": "Wireless & Signal Processing",
       "status": "Research project · 2026",
       "meta": "BTCL data · XGBoost · GRU · LSTM",
-      "description": "Forecasted regional mobile-internet traffic, focusing on the Savar region, using XGBoost, GRU, and LSTM. Benchmarked forecasts with MAE and RMSE to explore data-driven bandwidth allocation and network capacity planning.",
+      "description": "Developed a predictive pipeline for mobile-internet traffic demand using BTCL regional data with an emphasis on Savar, Bangladesh. Benchmarked XGBoost, GRU, and LSTM models using MAE/RMSE to investigate dynamic bandwidth planning and network-capacity decisions.",
       "link": "",
       "images": [
         "assets/projects/mobile-traffic.jpg",
@@ -111,7 +112,7 @@ window.PORTFOLIO_CONFIG = {
       "category": "Embedded Systems & Robotics",
       "status": "Engineering project",
       "meta": "Raspberry Pi · IMU · Visual odometry · Edge AI",
-      "description": "Developed a semi-autonomous search-and-rescue drone for GPS-denied environments, combining inertial navigation, dual-camera visual odometry, Raspberry Pi-based human detection, and wireless ground-station reporting.",
+      "description": "Developed a GPS-independent semi-autonomous search-and-rescue drone for post-disaster environments. Combined IMU-assisted inertial navigation with dual-camera visual odometry for GPS-denied operation, onboard human detection on Raspberry Pi, and wireless reporting of potential victims to a ground-control station.",
       "link": "",
       "images": [
         "assets/projects/rescue-drone.jpg",
@@ -124,7 +125,7 @@ window.PORTFOLIO_CONFIG = {
       "category": "Embedded Systems & Robotics",
       "status": "Engineering project",
       "meta": "ESP32 · MPU6050 · GPS · GSM",
-      "description": "Built a wearable IoT smart helmet featuring fall/crash detection, alcohol sensing, overspeed monitoring, GPS localization, SIM800L emergency communication, and a mobile app for SOS and monitoring.",
+      "description": "Designed an ESP32-based IoT smart helmet with MPU6050/IMU fall detection, SIM800L GSM and GPS for emergency alerts and location tracking, alcohol and overspeed sensing, and a custom Android companion app for SOS signaling and system health monitoring.",
       "link": "",
       "images": [
         "assets/projects/smart-helmet.jpg",
@@ -137,7 +138,7 @@ window.PORTFOLIO_CONFIG = {
       "category": "Embedded Systems & Robotics",
       "status": "Engineering project",
       "meta": "Arduino · ESP32 · ESP-NOW · Flame sensors",
-      "description": "Built a mobile robot integrating flame sensors, L298N motor drivers, autonomous navigation, and fire-suppression actuation. Used ESP-NOW for inter-controller communication and closed-loop flame localization.",
+      "description": "Built an autonomous fire-extinguishing robot with ESP32 and Arduino controllers. Integrated flame sensors and L298N motor drivers in closed-loop navigation and fire-suppression logic, using ESP-NOW for low-latency inter-controller communication.",
       "link": "",
       "images": [
         "assets/projects/fire-robot.jpg",
@@ -150,7 +151,7 @@ window.PORTFOLIO_CONFIG = {
       "category": "Machine Learning & Data Science",
       "status": "Engineering project",
       "meta": "MATLAB · MFCC · KNN · ICBHI dataset",
-      "description": "Classified pulmonary disorders using MFCC features extracted from respiratory audio and a KNN classifier in MATLAB. A project variant reports 98.66% macro sensitivity.",
+      "description": "Built a MATLAB pulmonary-disorder classification pipeline for respiratory audio using Mel-Frequency Cepstral Coefficients (MFCC) and a K-Nearest Neighbors classifier. Evaluated classification on the ICBHI respiratory dataset; one project variant reports 98.66% macro sensitivity.",
       "link": "",
       "images": [
         "assets/projects/respiratory-audio.jpg",
@@ -163,7 +164,7 @@ window.PORTFOLIO_CONFIG = {
       "category": "Embedded Systems & Robotics",
       "status": "Engineering project",
       "meta": "ESP32-CAM · MobileNetV2 · Edge AI",
-      "description": "Developed an embedded vision prototype with ESP32-CAM video streaming and a pretrained MobileNetV2 classifier, displaying live predictions and confidence overlays.",
+      "description": "Developed an embedded vision system combining ESP32-CAM live video streaming with a pretrained MobileNetV2 model for real-time object recognition, showing predicted classes and confidence scores over the video feed.",
       "link": "",
       "images": [
         "assets/projects/esp-eye.jpg",
@@ -183,7 +184,107 @@ window.PORTFOLIO_CONFIG = {
         "assets/projects/pressure-monitor-2.jpg",
         "assets/projects/pressure-monitor-3.jpg"
       ]
+    },
+    {
+      "title": "Frequency Converter with Real-Time Display and Tuning",
+      "category": "Electronics & Circuit Design",
+      "status": "Engineering project",
+      "meta": "AC-DC-AC | Signal conditioning | LCD | Frequency tuning",
+      "description": "Designed a low-cost AC signal conditioner to convert arbitrary AC waveforms into a stable sinusoidal output with tunable frequency. Used an AC-DC-AC conversion architecture and an LCD for live frequency readout.",
+      "link": "",
+      "images": [
+        "assets/projects/frequency-converter-1.jpg",
+        "assets/projects/frequency-converter-2.jpg",
+        "assets/projects/frequency-converter-3.jpg"
+      ]
+    },
+    {
+      "title": "Tic-Tac-Toe Game Using Basic Gates",
+      "category": "Digital Electronics",
+      "status": "Engineering project",
+      "meta": "Flip-flops | Combinational logic | Logic ICs",
+      "description": "Implemented a fully functional Tic-Tac-Toe game using flip-flops and combinational logic-gate ICs, without using a microcontroller.",
+      "link": "",
+      "images": [
+        "assets/projects/tic-tac-toe-logic-1.jpg",
+        "assets/projects/tic-tac-toe-logic-2.jpg",
+        "assets/projects/tic-tac-toe-logic-3.jpg"
+      ]
+    },
+    {
+      "title": "Frequency Division Multiplexing (FDM)",
+      "category": "Wireless & Signal Processing",
+      "status": "Engineering project",
+      "meta": "Analog FDM | Discrete components | Multi-channel transmission",
+      "description": "Constructed an analog frequency division multiplexing hardware demonstration using discrete components to transmit multiple signals simultaneously over a shared medium.",
+      "link": "",
+      "images": [
+        "assets/projects/fdm-hardware-1.jpg",
+        "assets/projects/fdm-hardware-2.jpg",
+        "assets/projects/fdm-hardware-3.jpg"
+      ]
+    },
+    {
+      "title": "Sensitivity Analysis of IEEE 30 & 33 Bus Systems",
+      "category": "Power Systems",
+      "status": "Engineering project",
+      "meta": "PSAF | MATLAB | Cascading failures",
+      "description": "Simulated cascading failures in IEEE 30-bus and 33-bus power networks using PSAF and MATLAB to identify critical nodes and investigate system sensitivity.",
+      "link": "",
+      "images": [
+        "assets/projects/power-system-sensitivity-1.jpg",
+        "assets/projects/power-system-sensitivity-2.jpg",
+        "assets/projects/power-system-sensitivity-3.jpg"
+      ]
+    },
+    {
+      "title": "Linear Induction Motor (LIM)",
+      "category": "Electromechanical Systems",
+      "status": "Engineering project",
+      "meta": "Two-pole LIM | Four-pole LIM | Winding | Characterization",
+      "description": "Designed, wound, and characterized both two-pole and four-pole linear induction motor configurations.",
+      "link": "",
+      "images": [
+        "assets/projects/linear-induction-motor-1.jpg",
+        "assets/projects/linear-induction-motor-2.jpg",
+        "assets/projects/linear-induction-motor-3.jpg"
+      ]
+    },
+    {
+      "title": "Transient Analysis App",
+      "category": "Electronics & Circuit Design",
+      "status": "Engineering project",
+      "meta": "MATLAB | AC/DC circuits | Time-frequency analysis",
+      "description": "Built a MATLAB application for analyzing AC and DC circuits, visualizing time- and frequency-domain responses, and plotting steady-state phase differences.",
+      "link": "",
+      "images": [
+        "assets/projects/transient-analysis-app-1.jpg",
+        "assets/projects/transient-analysis-app-2.jpg",
+        "assets/projects/transient-analysis-app-3.jpg"
+      ]
+    },
+    {
+      "title": "Electrical Service Design for a 14-Story Residential Building",
+      "category": "Electrical Design",
+      "status": "Engineering project",
+      "meta": "AutoCAD | Load scheduling | Wiring & distribution",
+      "description": "Prepared a complete AutoCAD electrical service layout for a 14-story, four-unit residential apartment building, including load schedules, wiring diagrams, and distribution planning.",
+      "link": "",
+      "images": [
+        "assets/projects/autocad-building-electrical-1.jpg",
+        "assets/projects/autocad-building-electrical-2.jpg",
+        "assets/projects/autocad-building-electrical-3.jpg"
+      ]
     }
   ],
-  "masterCv": "assets/master-cv.pdf"
+  "masterCv": "assets/master-cv.pdf",
+  "tagline": "Fresh EEE Graduate | Communication & Signal Processing | Tech Explorer | Engineer | Problem Solver",
+  "aviation": "Beyond engineering, I am fascinated by modern fighter jets and aviation technology. I follow the stealth capabilities of the F-22 Raptor and F-35 Lightning II, the design of the Su-57 Felon, and classics such as the F-14 Tomcat. Aerospace engineering inspires my curiosity about advanced systems, flight, and technological innovation. I also enjoy aviation documentaries and films such as Top Gun.",
+  "socialLinks": {
+    "linkedin": "https://www.linkedin.com/in/md-jaied-hasan",
+    "github": "https://github.com/jh-emon002",
+    "facebook": "https://www.facebook.com/jh.emon.002",
+    "kaggle": "https://www.kaggle.com/jaiedhasanemon",
+    "secondaryEmail": "2006146@eee.buet.ac.bd"
+  }
 };

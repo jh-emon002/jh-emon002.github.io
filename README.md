@@ -1,100 +1,86 @@
-# Md. Jaied Hasan — Academic Portfolio
+# Md. Jaied Hasan - Portfolio Website
 
-A GitHub Pages-ready academic portfolio populated from the supplied research CV and master CV (October 2026), while preserving the original dark/circuit visual theme. Built with HTML, CSS, and JavaScript; no build step or server is necessary.
+A static GitHub Pages portfolio updated from the supplied `settings.js`, GitHub profile README, and earlier CVs. The existing dark circuit theme, portrait, CV download buttons, and per-item photo galleries are retained. No build step or server-side framework is needed.
 
-## What was updated
+## What's new
 
-- Homepage: updated research profile, BUET affiliation, Wi-Fi 8 work, FlyRank AI internship, thesis, portrait, and links to both uploaded CVs.
-- Research: current BUET research assistantship under Prof. Dr. Md. Forkan Uddin and the undergraduate thesis under Prof. Dr. Hafiz Imtiaz.
-- Publications: separate cards for a manuscript under review, an accepted 2026 conference paper, and a submitted 2026 conference work. Status is **not** presented as published unless supported.
-- Projects: 10 substantive research and engineering projects from the CVs.
-- Experience: research assistantship, FlyRank AI, Banglalink attachment, and Bangladesh Mathematical Olympiad.
-- Achievements: scholarships and Brain of Varendra competition.
-- Education: undergraduate BUET degree and higher secondary college, **no graduate education**.
-- Contact: email, LinkedIn, and GitHub.
-- Images: per-publication and per-project galleries, supporting an unlimited number of explicitly listed local files, horizontal scrollable thumbnails, click-to-enlarge, keyboard left/right, mobile layouts, and graceful handling of missing files.
+- **Projects:** 17 entries, including seven added from the GitHub README: Frequency Converter with Real-Time Display and Tuning, Tic-Tac-Toe Using Basic Gates, Frequency Division Multiplexing, Sensitivity Analysis of IEEE 30 & 33 Bus Systems, Linear Induction Motor, Transient Analysis App, and AutoCAD Electrical Service Design for a 14-story building. Existing Wi-Fi 8, federated PCA, ML, rescue drone, smart helmet, robotics, and other projects remain.
+- **Skills:** New dedicated page featuring the GitHub README's programming, simulation, embedded, AI/ML, PCB, and app-development tools, plus wireless research methods supported by the CV.
+- **Beyond engineering:** Fighter-jet and aviation interest on the homepage, as described in the GitHub README.
+- **Contact:** Both email addresses and clickable LinkedIn, GitHub, Facebook, and Kaggle profiles.
+- **Homepage:** The "Fresh EEE Graduate" tagline and "Always learning. Always improving." closing line.
+- **Publications:** Your three uploaded publication entries and their exact submitted/accepted/under-review statuses remain unchanged. Existing publication image paths are preserved.
+- **Education:** Undergraduate and HSC qualifications only; no graduate-degree entry.
 
 ## Files
 
-```
-index.html
-app.js
-style.css
-settings.js              <- website content, project/publication images
+```text
+index.html             Main HTML and edit dialogs
+style.css              Responsive dark-theme styling
+app.js                 Navigation, galleries, customization, search, rendering
+settings.js            Public content, publication/project entries, image paths
 favicon.svg
 assets/
-  portrait.jpg           <- original portrait, extracted from existing settings.js
-  cv.pdf                 <- the provided research CV
-  master-cv.pdf          <- the provided extended master CV
-  publications/          <- place publication images here
-  projects/              <- place project images here
+  portrait.jpg         Existing portfolio portrait
+  cv.pdf               Research CV
+  master-cv.pdf        Master CV
+  IMAGE_GUIDE.md       Complete photo-path list for all 20 items
+  publications/        Put your own publication images here
+  projects/            Put your own project photos here
 ```
 
-## Add photos for each publication or project
+## Multi-image galleries
 
-Three photo filenames per item are already configured in `settings.js`. **Copy your own photos to any of the matching paths** to display them automatically, without editing any code. A few first-photo examples:
+Every item has an `images` array inside `settings.js`. It may contain 1, 3, 20, or more paths. Galleries display loaded photos in a horizontal, scrollable strip; clicking any thumbnail opens an enlarged photo with previous/next navigation. Missing images are hidden gracefully. The layout is mobile-responsive.
 
-- `assets/publications/federated-sparse-pca.jpg`
-- `assets/publications/motorcycle-safety.jpg`
-- `assets/publications/mobile-traffic-forecasting.jpg`
-- `assets/projects/wifi8-beamforming.jpg`
-- `assets/projects/rescue-drone.jpg`
-- `assets/projects/smart-helmet.jpg`
-- `assets/projects/toxicity-classification.jpg`
+**Images are referenced, not embedded.** No project/publication photos were uploaded along with these source files. The website will show a gallery for an item once files exist in its configured `assets/` paths. Preserve existing photo files when replacing website source code; avoid deleting the `assets/` directories in your GitHub clone.
 
-See `assets/IMAGE_GUIDE.md` for the complete list. The photos **were not included** in the uploaded files, so project/publication cards remain text-only until you provide photos. Missing image paths do not display broken-image icons.
+See [`assets/IMAGE_GUIDE.md`](assets/IMAGE_GUIDE.md) for every image filename, including the custom paths in your most recent `settings.js`.
 
-Every project and publication already has three image paths (for example, `wifi8-beamforming.jpg`, `wifi8-beamforming-2.jpg`, and `wifi8-beamforming-3.jpg`). Images appear only if you have supplied the corresponding files. Any combination of the three is fine. A scrollable thumbnail strip avoids making cards excessively tall. Selecting a thumbnail opens a lightbox with arrows and keyboard navigation.
+### Adding more images
 
-To show **more than three photos** for any project or paper, open `settings.js` and add more image paths to that item's `images` array. There is no per-item image limit:
+In `settings.js`, find a publication or project entry and add more strings to its `images` list:
 
 ```js
 "images": [
   "assets/projects/wifi8-beamforming.jpg",
   "assets/projects/wifi8-beamforming-2.jpg",
   "assets/projects/wifi8-beamforming-3.jpg",
-  "assets/projects/wifi8-beamforming-4.png",
-  "assets/projects/wifi8-beamforming-5.webp"
+  "assets/projects/wifi8-beamforming-4.png"
 ]
 ```
 
-You can also edit image paths through the built-in Customization panel:
+You can also manage images and items in the built-in editor at `?edit=1`: click **Customize**, locate the relevant project/publication, enter image paths on separate lines, **Save preview**, then **Download settings.js**. Upload/commit that settings file and all referenced photos to publish for everyone.
 
-1. Open `index.html?edit=1` in a browser (or add `?edit=1` to your live site URL).
-2. Click **Customize** and scroll to **Publication entries & photos** or **Project entries & photos**.
-3. Edit titles, statuses, categories, descriptions, and links; add image paths **one per line**. Add/remove entries as needed.
-4. Click **Save preview** for a private browser preview.
-5. Click **Download settings.js**, replace the file in the GitHub repository, and **upload all referenced photos to `assets/`**.
-6. Commit. GitHub Pages will deploy the changes.
+### Edit other website information
 
-The Customize tool is local/browser-only; saving a preview does not publish edits. Other visitors will not see Customize unless they explicitly use `?edit=1`.
+The Customize dialog also supports: profile tagline, aviation interests, social URLs, BUET email, and text for the Skills and other pages. To update a skill group, write a group heading on its first line and separate technologies with `|` on the next line, placing a blank line between groups. These edits are stored in the downloaded `settings.js`.
 
-**Photo recommendations:** export JPG, PNG, or WebP; aim for at least 1200 pixels on the long edge, compress the images to keep the site fast, and do not upload photos you do not have permission to publish. The gallery uses horizontally scrollable thumbnail previews; clicking opens the full image. Only referenced paths are displayed: adding a fourth file requires adding its path to the `images` array. Images have text-based alt labels generated from the project/publication title.
+If you have previously used `?edit=1`, your browser may have older private preview data saved under `academic-portfolio-v1`, which can override the newly published settings only while in edit mode. Open the normal URL without `?edit=1` for the published version; export or clear the older preview data if needed.
 
-## Preview locally
+## Local preview
 
-The simple approach is to open `index.html` in a modern browser. If you prefer a local server, in the project folder run:
+Double-click `index.html`, or serve from the root folder for a closer GitHub Pages preview:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then visit `http://localhost:8000/` (or `http://localhost:8000/?edit=1` to edit).
+Open `http://localhost:8000/` in the browser. Use `http://localhost:8000/?edit=1` to customize.
 
-## Publish with GitHub Pages
+## Publish to GitHub Pages
 
-Commit `index.html`, `style.css`, `app.js`, `settings.js`, `favicon.svg`, and **the entire `assets` directory** to your repository root. Keep the case and spelling of asset filenames unchanged. Under **Settings → Pages**, choose **Deploy from a branch**, `main`, `/ (root)` if not already configured. The live site updates after deployment.
-
-For an existing local clone, copy the files into it, then run:
+Copy the files from this package into your cloned repository. **Keep any existing photos in `assets/projects/` and `assets/publications/`**, since the ZIP does not contain them.
 
 ```bash
+git status
 git add index.html style.css app.js settings.js favicon.svg README.md assets/
-git commit -m "Update portfolio from CV and add image galleries"
+git commit -m "Update portfolio from GitHub README and expand projects"
 git push origin main
 ```
 
-If your repository uses a different branch, substitute that branch name. Check `git status` before committing to avoid overwriting unrelated changes.
+If your repository uses another branch, use that branch instead. For GitHub Pages, keep `index.html` at the repository root and configure deployment from `main` / root folder (unless your existing setup is different).
 
-## Notes on CV accuracy
+## Accuracy notes
 
-The source CVs report one manuscript under review, one conference paper accepted in 2026, and one conference submission in 2026. The website reflects those stages rather than implying all have been published. Bibliographic details (author lists, venues, DOIs) and finished publication URLs were **not provided**, so they have not been invented; add them when available. The working title of the traffic-forecasting conference work is descriptive rather than verified as its final submission title.
+Publication statuses and titles have been retained **verbatim from your latest uploaded `settings.js`**; the website does not claim a submission has been published. Project descriptions were expanded from your shared GitHub README without inventing new hardware, results, or publications. The new projects have placeholder image **paths only**; they do not have invented images.
