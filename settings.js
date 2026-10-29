@@ -23,7 +23,8 @@ window.PORTFOLIO_CONFIG = {
       "description": "Privacy-preserving, federated sparse principal-component analysis with a correlated-noise mechanism. Evaluates privacy–utility, sparsity, convergence, reconstruction, and communication-efficiency trade-offs.",
       "link": "",
       "images": [
-        "assets/publications/method.drawio.png"
+        "assets/publications/method.drawio.png",
+        "assets/publications/img2.png"
       ]
     },
     {
