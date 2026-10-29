@@ -1,63 +1,96 @@
-# Academic Portfolio — GitHub Pages Edition
+# Md. Jaied Hasan — Academic Portfolio
 
-A static portfolio modeled on the supplied reference. Includes a circuit-themed home page, circular portrait, research, publications, projects, experience, achievements, education, contact, search, and mobile navigation. All content is placeholder content until you replace it.
+A GitHub Pages-ready academic portfolio populated from the supplied research CV and master CV (October 2026), while preserving the original dark/circuit visual theme. Built with HTML, CSS, and JavaScript; no build step or server is necessary.
 
-## 1. Personalize before publishing
+## What was updated
 
-1. Extract this ZIP on your computer.
-2. Open `index.html` in a current browser. Add `?edit=1` before any `#home` fragment in the address (for example `file:///.../index.html?edit=1`).
-3. Click **Customize**. Enter your name, biography, email, page content, photo, and CV link. Blank lines separate sections; the first line is each section heading.
-4. Click **Save preview** to check your changes. This saves only in your browser.
-5. Click **Download settings.js**. Move the downloaded file into the extracted folder, replacing its original `settings.js`.
-6. Reopen `index.html` without `?edit=1` to check what visitors will see.
+- Homepage: updated research profile, BUET affiliation, Wi-Fi 8 work, FlyRank AI internship, thesis, portrait, and links to both uploaded CVs.
+- Research: current BUET research assistantship under Prof. Dr. Md. Forkan Uddin and the undergraduate thesis under Prof. Dr. Hafiz Imtiaz.
+- Publications: separate cards for a manuscript under review, an accepted 2026 conference paper, and a submitted 2026 conference work. Status is **not** presented as published unless supported.
+- Projects: 10 substantive research and engineering projects from the CVs.
+- Experience: research assistantship, FlyRank AI, Banglalink attachment, and Bangladesh Mathematical Olympiad.
+- Achievements: scholarships and Brain of Varendra competition.
+- Education: undergraduate BUET degree and higher secondary college, **no graduate education**.
+- Contact: email, LinkedIn, and GitHub.
+- Images: per-publication and per-project galleries, supporting multiple local files, click-to-enlarge, keyboard left/right, mobile layouts, and graceful handling of missing files.
 
-Alternatively, edit `settings.js` directly in a text editor. Keep its JavaScript punctuation intact. The photo and CV can use full HTTPS links or relative file paths such as `assets/portrait.jpg` and `assets/cv.pdf`. If using local files, create `assets` next to `index.html`, put the files there, and upload that folder too. Uploaded photos in Customize are embedded in settings.js.
+## Files
 
-Customize is a local preview tool, not an authenticated admin system. The published content comes from the committed settings.js; editing a browser preview does not update GitHub. Public visitors do not see the Customize button. Add `?edit=1` to open it yourself. Use **Download backup** and **Import settings** for JSON backups.
+```
+index.html
+app.js
+style.css
+settings.js              <- website content, project/publication images
+favicon.svg
+assets/
+  portrait.jpg           <- original portrait, extracted from existing settings.js
+  cv.pdf                 <- the provided research CV
+  master-cv.pdf          <- the provided extended master CV
+  publications/          <- place publication images here
+  projects/              <- place project images here
+```
 
-## 2. Create your GitHub repository
+## Add photos for each publication or project
 
-1. Sign in at https://github.com.
-2. Click **+ → New repository**.
-3. For your main personal website, name the repository exactly `YOUR_USERNAME.github.io`, replacing YOUR_USERNAME with your actual GitHub username. If that repository already exists, use it only if you intend to update its website; otherwise choose another name such as `academic-portfolio`.
-4. Choose **Public** for the straightforward free GitHub Pages setup.
-5. Select **Add a README file**, then **Create repository**.
+The image filenames are already configured in `settings.js`. **Copy your own photos to the matching paths** to display them automatically, without editing any code. A few examples:
 
-Your uploaded source and published content will be public in this setup.
+- `assets/publications/federated-sparse-pca.jpg`
+- `assets/publications/motorcycle-safety.jpg`
+- `assets/publications/mobile-traffic-forecasting.jpg`
+- `assets/projects/wifi8-beamforming.jpg`
+- `assets/projects/rescue-drone.jpg`
+- `assets/projects/smart-helmet.jpg`
+- `assets/projects/toxicity-classification.jpg`
 
-## 3. Upload the site
+See `assets/IMAGE_GUIDE.md` for the complete list. The photos **were not included** in the uploaded files, so project/publication cards remain text-only until you provide photos. Missing image paths do not display broken-image icons.
 
-1. In your repository, click **Add file → Upload files**.
-2. Drag the extracted site's files into the upload area: `index.html`, `style.css`, `app.js`, `settings.js`, `favicon.svg`, and optionally README.md and `.nojekyll`. Include `assets` if you created it.
-3. Upload the FILES, not the ZIP and not the enclosing folder. `index.html` must appear at the repository's top level.
-4. Enter a commit message, such as `Add academic portfolio`, and click **Commit changes**. If prompted, commit directly to `main` for this new repository.
+To show multiple photos for a single project or paper, open `settings.js` and add more image paths to that item's `images` array:
 
-The `.nojekyll` file skips Jekyll processing; the website uses no Jekyll-specific files, so it also works if your file picker hides that file.
+```js
+"images": [
+  "assets/projects/wifi8-beamforming.jpg",
+  "assets/projects/wifi8-beamforming-2.png",
+  "assets/projects/wifi8-beamforming-3.webp"
+]
+```
 
-## 4. Enable GitHub Pages
+You can also edit image paths through the built-in Customization panel:
 
-1. Open **Settings → Pages** in your repository.
-2. Under **Build and deployment → Source**, select **Deploy from a branch**.
-3. Select branch **main**, folder **/ (root)**, then **Save**.
-4. Open the **Actions** tab and wait for the Pages deployment to succeed. It can take a few minutes.
-5. Return to **Settings → Pages** and click **Visit site**.
+1. Open `index.html?edit=1` in a browser (or add `?edit=1` to your live site URL).
+2. Click **Customize** and scroll to **Publication entries & photos** or **Project entries & photos**.
+3. Edit titles, statuses, categories, descriptions, and links; add image paths **one per line**. Add/remove entries as needed.
+4. Click **Save preview** for a private browser preview.
+5. Click **Download settings.js**, replace the file in the GitHub repository, and **upload all referenced photos to `assets/`**.
+6. Commit. GitHub Pages will deploy the changes.
 
-For a repository named `YOUR_USERNAME.github.io`, your URL will be `https://YOUR_USERNAME.github.io/`. For a project repository such as `academic-portfolio`, it will be `https://YOUR_USERNAME.github.io/academic-portfolio/`. These are examples; GitHub Pages will show your actual URL.
+The Customize tool is local/browser-only; saving a preview does not publish edits. Other visitors will not see Customize unless they explicitly use `?edit=1`.
 
-## 5. Publish future edits
+**Photo recommendations:** export JPG, PNG, or WebP; aim for at least 1200 pixels on the long edge, compress the images to keep the site fast, and do not upload photos you do not have permission to publish. The gallery will crop thumbnail previews; clicking opens the full image. Images have text-based alt labels generated from the project/publication title.
 
-Open your live URL with `?edit=1`, customize, and download settings.js. In the repository, use **Add file → Upload files** and upload settings.js at the root, replacing the previous file. Commit. Pages republishes after the commit. Open the normal URL without `?edit=1` to check the published version. A hard refresh can help if a browser caches old files.
+## Preview locally
 
-To change the browser's default tab title and sharing description, edit the `<title>` and description meta tag near the top of index.html. The in-page tab title updates from your profile when JavaScript runs.
+The simple approach is to open `index.html` in a modern browser. If you prefer a local server, in the project folder run:
 
-## Troubleshooting
+```bash
+python -m http.server 8000
+```
 
-- **404:** Ensure Pages is enabled for main / (root), index.html is at the top level, and the Pages workflow succeeded.
-- **Old or placeholder profile:** Confirm you replaced and committed settings.js. Saving a preview alone does not publish it.
-- **Photo/CV missing:** Check capitalization and upload the file at the exact configured path. The photo is square-cropped. PDF links open in a new tab.
-- **JavaScript syntax error after editing settings.js:** Check commas and quotes, or generate a valid replacement through Customize.
-- **No Pages option:** Check your repository permissions and plan/organization policies.
+Then visit `http://localhost:8000/` (or `http://localhost:8000/?edit=1` to edit).
 
-No install, build command, API keys, server, or ChatGPT login is required for the GitHub-hosted version. No custom domain is included; you can configure a domain you own later.
+## Publish with GitHub Pages
 
-Official guide: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+Commit `index.html`, `style.css`, `app.js`, `settings.js`, `favicon.svg`, and **the entire `assets` directory** to your repository root. Keep the case and spelling of asset filenames unchanged. Under **Settings → Pages**, choose **Deploy from a branch**, `main`, `/ (root)` if not already configured. The live site updates after deployment.
+
+For an existing local clone, copy the files into it, then run:
+
+```bash
+git add index.html style.css app.js settings.js favicon.svg README.md assets/
+git commit -m "Update portfolio from CV and add image galleries"
+git push origin main
+```
+
+If your repository uses a different branch, substitute that branch name. Check `git status` before committing to avoid overwriting unrelated changes.
+
+## Notes on CV accuracy
+
+The source CVs report one manuscript under review, one conference paper accepted in 2026, and one conference submission in 2026. The website reflects those stages rather than implying all have been published. Bibliographic details (author lists, venues, DOIs) and finished publication URLs were **not provided**, so they have not been invented; add them when available. The working title of the traffic-forecasting conference work is descriptive rather than verified as its final submission title.
