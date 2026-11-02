@@ -13,13 +13,13 @@ window.PORTFOLIO_CONFIG = {
     "Achievements": "Scholarships & Academic Recognition\nDean’s List Scholarship — Level 1 and Level 3, BUET\nUniversity Merit Scholarship — BUET\nShamsul Huda Chowdhury Scholarship — BUET\nProfessor Dr. Ahmad Ullah and Mrs. Chemanara Ahmad Ullah Trust Fund Scholarship — BUET\n\nCompetitions\n1st Runner-Up — Brain of Varendra, talent-hunt competition organized by Varendra University, Rajshahi.",
     "Education": "Undergraduate Education\nBachelor of Science in Electrical and Electronic Engineering\nBangladesh University of Engineering and Technology (BUET), Dhaka\nJanuary 2022 – June 2026\nMajor: Communication and Signal Processing\nCGPA: 3.80/4.00 (Top 27%); last four semesters: 3.85/4.00\n\nSelected Coursework\nWireless Communications; Communication Systems I & II; Digital Signal Processing; Linear Algebra; Probability and Statistics; Artificial Intelligence and Machine Learning; Radar and Satellite Communications; Microprocessor and Embedded Systems; Control Systems.",
     "Contact": "Get in Touch\nI welcome discussions about research collaboration, wireless systems, machine learning, and practical engineering. Use the contact links below to reach me.\n\nAcademic Affiliation\nDepartment of Electrical and Electronic Engineering\nBangladesh University of Engineering and Technology (BUET)\nDhaka, Bangladesh",
-    "Skills": "Programming\nPython | MATLAB | C | C++ | Verilog\n\nSimulation & Design\nROS | Keil | Proteus | PSpice | AutoCAD | MATLAB/Simulink\n\nEmbedded Systems\nArduino | ESP32 | Raspberry Pi | FPGA | ESP32-CAM\n\nAI & Machine Learning\nPyTorch | TensorFlow | Keras | Scikit-learn | Pandas | XGBoost | Hugging Face Transformers | GRU/LSTM\n\nPCB Design\nKiCad\n\nApp Development\nMIT App Inventor\n\nWireless & Signal Processing\nWi-Fi 8 / IEEE 802.11bn | Multi-AP Coordination | Coordinated Beamforming | CSMA/CA | Directional Channel Modeling | SINR Analysis | Digital Signal Processing\n\nDevelopment & Research Tools\nGit/GitHub | Linux | NumPy | Federated Learning | Differential Privacy | Time-Series Forecasting"
+    "Skills": "Programming\nPython | MATLAB | C | C++ | Verilog\n\nSimulation & Design\nROS | Keil | Proteus | PSpice | AutoCAD | MATLAB/Simulink\n\nEmbedded Systems\nArduino | ESP32 | Raspberry Pi | ESP32-CAM\n\nAI & Machine Learning\nPyTorch | TensorFlow | Keras | Scikit-learn | Pandas |\n\nPCB Design\nKiCad | Proteus\n\nApp Development\nMIT App Inventor\n\nWireless & Signal Processing\nWi-Fi 8 / IEEE 802.11bn | Multi-AP Coordination | Coordinated Beamforming \n\nDevelopment & Research Tools\nGit/GitHub | Linux | NumPy | Federated Learning | Differential Privacy | Time-Series Forecasting"
   },
   "publicationItems": [
     {
       "title": "CAPE-SPCA: Efficient Differentially Private Federated Sparse PCA using Correlated Noise for Horizontally Partitioned Data",
       "category": "Journal manuscript",
-      "status": "Under review at Journal of the Franklin Institute · 2026",
+      "status": "Under review at Journal of the Franklin Institute(Q1) · 2026",
       "meta": "Based on undergraduate thesis",
       "description": "Privacy-preserving, federated sparse principal-component analysis with a correlated-noise mechanism. Evaluates privacy–utility, sparsity, convergence, reconstruction, and communication-efficiency trade-offs.",
       "link": "",
@@ -32,7 +32,7 @@ window.PORTFOLIO_CONFIG = {
     {
       "title": "An Integrated Dual-Module Cyber Physical System for Motorcycle Safety: Utilizing Pre-Ride Safety, Crash Detection and Swift Response with Mobile Application Companion",
       "category": "Conference paper",
-      "status": "Accepted at IEEE iCACCESS 2026 · To be published",
+      "status": "Accepted at IEEE iCACCESS 2026 · Presented at the conference · To be published",
       "meta": "Motorcycle safety · IoT · Cyber-physical systems",
       "description": "Conference paper on the integrated pre-ride safety, crash detection, emergency-response, and mobile companion system. Venue and publication link can be added once available.",
       "link": "",
@@ -63,24 +63,12 @@ window.PORTFOLIO_CONFIG = {
       "description": "Python-based wireless-network simulator for multi-AP coordination, carrier sensing, channel and propagation modeling, directional beams, zero-forcing precoding, SINR, and throughput. Compares conventional CSMA/CA, coordinated beamforming with inter-cluster interference, and an ideal interference-free reference.",
       "link": "",
       "images": [
-        "assets/projects/wifi8-beamforming.jpg",
-        "assets/projects/wifi8-beamforming-2.jpg",
-        "assets/projects/wifi8-beamforming-3.jpg"
+        "assets/projects/wifi8_1.jpg",
+        "assets/projects/wifi8_2.jpg",
+        "assets/projects/wifi8_3.jpg"
       ]
     },
-    {
-      "title": "Federated Sparse PCA with Differential Privacy",
-      "category": "Machine Learning & Data Science",
-      "status": "Undergraduate thesis",
-      "meta": "Federated learning · Privacy · Optimization",
-      "description": "Federated sparse PCA for horizontally partitioned datasets using correlated noise for differential privacy. Assessed sparsity, convergence, reconstruction, and privacy–utility trade-offs.",
-      "link": "",
-      "images": [
-        "assets/projects/federated-pca.jpg",
-        "assets/projects/federated-pca-2.jpg",
-        "assets/projects/federated-pca-3.jpg"
-      ]
-    },
+    
     {
       "title": "Multilingual Toxicity Classification with Knowledge Distillation",
       "category": "Machine Learning & Data Science",
