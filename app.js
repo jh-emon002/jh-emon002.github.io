@@ -71,7 +71,7 @@ function renderHome(){
 function formatEducationFact(line){
  const text=String(line||'');
  if(!/^CGPA\s*:/i.test(text))return esc(text);
- return esc(text).replace(/(CGPA:\s*[0-9.]+\s*\/\s*[0-9.]+)/i,'<strong class="cgpa-emphasis">$1</strong>');
+ return esc(text);
 }
 function renderEducation(){
  const blocks=contentBlocks(data.sections.Education);
