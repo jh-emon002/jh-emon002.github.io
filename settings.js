@@ -90,9 +90,8 @@ window.PORTFOLIO_CONFIG = {
       "description": "Developed a predictive pipeline for mobile-internet traffic demand using BTCL regional data with an emphasis on Savar, Bangladesh. Benchmarked XGBoost, GRU, and LSTM models using MAE/RMSE to investigate dynamic bandwidth planning and network-capacity decisions.",
       "link": "",
       "images": [
-        "assets/projects/mobile-traffic.jpg",
-        "assets/projects/mobile-traffic-2.jpg",
-        "assets/projects/mobile-traffic-3.jpg"
+        "assets/publications/img6.png",
+        "assets/publications/img7.png"
       ]
     },
     {
