@@ -63,9 +63,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Python-based wireless-network simulator for multi-AP coordination, carrier sensing, channel and propagation modeling, directional beams, zero-forcing precoding, SINR, and throughput. Compares conventional CSMA/CA, coordinated beamforming with inter-cluster interference, and an ideal interference-free reference.",
       "link": "",
       "images": [
-        "assets/projects/wifi8_1.jpg",
-        "assets/projects/wifi8_2.jpg",
-        "assets/projects/wifi8_3.jpg"
+        "assets/projects/wifi3.png",
+        "assets/projects/wifi2.png",
+        "assets/projects/wifi1.png"
       ]
     },
     
@@ -77,9 +77,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Developed an XLM-RoBERTa teacher-student pipeline for Bangla, English, and Banglish harmful-content classification at the HerWILL AI for Digital Safety Datathon 2026. Used stratified 5-fold out-of-fold distillation, class-weighted training, temperature scaling, and macro-F1 bias calibration; trained a compact byte-level BPE student with mean/max pooling, reporting 0.344 F1NOP. The 47K+ sample teacher and approximately 5M-parameter student achieved about 55x parameter compression.",
       "link": "",
       "images": [
-        "assets/projects/toxicity-classification.jpg",
-        "assets/projects/toxicity-classification-2.jpg",
-        "assets/projects/toxicity-classification-3.jpg"
+        "assets/projects/toxicity1.png",
+        "assets/projects/toxicity2.png",
+        "assets/projects/toxicity3.png"
       ]
     },
     {
@@ -103,9 +103,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Developed a GPS-independent semi-autonomous search-and-rescue drone for post-disaster environments. Combined IMU-assisted inertial navigation with dual-camera visual odometry for GPS-denied operation, onboard human detection on Raspberry Pi, and wireless reporting of potential victims to a ground-control station.",
       "link": "",
       "images": [
-        "assets/projects/rescue-drone.jpg",
-        "assets/projects/rescue-drone-2.jpg",
-        "assets/projects/rescue-drone-3.jpg"
+        "assets/projects/drone3.png",
+        "assets/projects/drone2.jpg",
+        "assets/projects/drone1.jpg"
       ]
     },
     {
@@ -116,9 +116,8 @@ window.PORTFOLIO_CONFIG = {
       "description": "Designed an ESP32-based IoT smart helmet with MPU6050/IMU fall detection, SIM800L GSM and GPS for emergency alerts and location tracking, alcohol and overspeed sensing, and a custom Android companion app for SOS signaling and system health monitoring.",
       "link": "",
       "images": [
-        "assets/projects/smart-helmet.jpg",
-        "assets/projects/smart-helmet-2.jpg",
-        "assets/projects/smart-helmet-3.jpg"
+        "assets/publications/img4.png",
+        "assets/publications/img5.png"
       ]
     },
     {
@@ -129,35 +128,33 @@ window.PORTFOLIO_CONFIG = {
       "description": "Built an autonomous fire-extinguishing robot with ESP32 and Arduino controllers. Integrated flame sensors and L298N motor drivers in closed-loop navigation and fire-suppression logic, using ESP-NOW for low-latency inter-controller communication.",
       "link": "",
       "images": [
-        "assets/projects/fire-robot.jpg",
-        "assets/projects/fire-robot-2.jpg",
-        "assets/projects/fire-robot-3.jpg"
+        "assets/projects/fire3.png",
+        "assets/projects/fire2.jpg",
+        "assets/projects/fire1.jpg"
       ]
     },
     {
       "title": "Lung Disease Classification from Respiratory Audio",
       "category": "Machine Learning & Data Science",
       "status": "Engineering project",
-      "meta": "MATLAB · MFCC · KNN · ICBHI dataset",
+      "meta": "MATLAB · MFCC · KNN",
       "description": "Built a MATLAB pulmonary-disorder classification pipeline for respiratory audio using Mel-Frequency Cepstral Coefficients (MFCC) and a K-Nearest Neighbors classifier. Evaluated classification on the ICBHI respiratory dataset; one project variant reports 98.66% macro sensitivity.",
       "link": "",
       "images": [
-        "assets/projects/respiratory-audio.jpg",
-        "assets/projects/respiratory-audio-2.jpg",
-        "assets/projects/respiratory-audio-3.jpg"
+        "assets/projects/lung1.png",
+        "assets/projects/lung2.png"
       ]
     },
     {
       "title": "ESP-Eye: Embedded Vision System",
       "category": "Embedded Systems & Robotics",
       "status": "Engineering project",
-      "meta": "ESP32-CAM · MobileNetV2 · Edge AI",
+      "meta": "ESP32-CAM · MobileNetV2",
       "description": "Developed an embedded vision system combining ESP32-CAM live video streaming with a pretrained MobileNetV2 model for real-time object recognition, showing predicted classes and confidence scores over the video feed.",
       "link": "",
       "images": [
-        "assets/projects/esp-eye.jpg",
-        "assets/projects/esp-eye-2.jpg",
-        "assets/projects/esp-eye-3.jpg"
+        "assets/projects/esp-eye1.jpg",
+        "assets/projects/esp-eye2.jpg"
       ]
     },
     {
@@ -168,9 +165,8 @@ window.PORTFOLIO_CONFIG = {
       "description": "Implemented a dual-channel pressure-monitoring device that streams real-time data to a web dashboard, with local LCD/button operation and remote configuration.",
       "link": "",
       "images": [
-        "assets/projects/pressure-monitor.jpg",
-        "assets/projects/pressure-monitor-2.jpg",
-        "assets/projects/pressure-monitor-3.jpg"
+        "assets/projects/pressure1.png",
+        "assets/projects/pressure2.jpg"
       ]
     },
     {
@@ -181,9 +177,8 @@ window.PORTFOLIO_CONFIG = {
       "description": "Designed a low-cost AC signal conditioner to convert arbitrary AC waveforms into a stable sinusoidal output with tunable frequency. Used an AC-DC-AC conversion architecture and an LCD for live frequency readout.",
       "link": "",
       "images": [
-        "assets/projects/frequency-converter-1.jpg",
-        "assets/projects/frequency-converter-2.jpg",
-        "assets/projects/frequency-converter-3.jpg"
+        "assets/projects/pe1.png",
+        "assets/projects/pe2.png"
       ]
     },
     {
@@ -194,9 +189,9 @@ window.PORTFOLIO_CONFIG = {
       "description": "Implemented a fully functional Tic-Tac-Toe game using flip-flops and combinational logic-gate ICs, without using a microcontroller.",
       "link": "",
       "images": [
-        "assets/projects/tic-tac-toe-logic-1.jpg",
-        "assets/projects/tic-tac-toe-logic-2.jpg",
-        "assets/projects/tic-tac-toe-logic-3.jpg"
+        "assets/projects/tictac1.png",
+        "assets/projects/tictac2.jpg",
+        "assets/projects/tictac3.jpg"
       ]
     },
     {
@@ -207,9 +202,10 @@ window.PORTFOLIO_CONFIG = {
       "description": "Constructed an analog frequency division multiplexing hardware demonstration using discrete components to transmit multiple signals simultaneously over a shared medium.",
       "link": "",
       "images": [
-        "assets/projects/fdm-hardware-1.jpg",
-        "assets/projects/fdm-hardware-2.jpg",
-        "assets/projects/fdm-hardware-3.jpg"
+        "assets/projects/fdm1.png",
+        "assets/projects/fdm2.png",
+        "assets/projects/fdm3.png",
+        "assets/projects/fdm4.png"
       ]
     },
     {
@@ -220,9 +216,8 @@ window.PORTFOLIO_CONFIG = {
       "description": "Simulated cascading failures in IEEE 30-bus and 33-bus power networks using PSAF and MATLAB to identify critical nodes and investigate system sensitivity.",
       "link": "",
       "images": [
-        "assets/projects/power-system-sensitivity-1.jpg",
-        "assets/projects/power-system-sensitivity-2.jpg",
-        "assets/projects/power-system-sensitivity-3.jpg"
+        "assets/projects/ieee1.png",
+        "assets/projects/ieee2.png"
       ]
     },
     {
@@ -233,9 +228,8 @@ window.PORTFOLIO_CONFIG = {
       "description": "Designed, wound, and characterized both two-pole and four-pole linear induction motor configurations.",
       "link": "",
       "images": [
-        "assets/projects/linear-induction-motor-1.jpg",
-        "assets/projects/linear-induction-motor-2.jpg",
-        "assets/projects/linear-induction-motor-3.jpg"
+        "assets/projects/lim1.png",
+        "assets/projects/lim2.png"
       ]
     },
     {
@@ -246,9 +240,8 @@ window.PORTFOLIO_CONFIG = {
       "description": "Built a MATLAB application for analyzing AC and DC circuits, visualizing time- and frequency-domain responses, and plotting steady-state phase differences.",
       "link": "",
       "images": [
-        "assets/projects/transient-analysis-app-1.jpg",
-        "assets/projects/transient-analysis-app-2.jpg",
-        "assets/projects/transient-analysis-app-3.jpg"
+        "assets/projects/transient1.png",
+        "assets/projects/transient2.png"
       ]
     },
     {
@@ -259,9 +252,8 @@ window.PORTFOLIO_CONFIG = {
       "description": "Prepared a complete AutoCAD electrical service layout for a 14-story, four-unit residential apartment building, including load schedules, wiring diagrams, and distribution planning.",
       "link": "",
       "images": [
-        "assets/projects/autocad-building-electrical-1.jpg",
-        "assets/projects/autocad-building-electrical-2.jpg",
-        "assets/projects/autocad-building-electrical-3.jpg"
+        "assets/projects/esd1.png",
+        "assets/projects/esd2.png"
       ]
     }
   ],
